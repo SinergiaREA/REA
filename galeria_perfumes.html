@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Security Meta Tags - MÁXIMA SEGURIDAD -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- SEO & Description -->
+    <meta name="description" content="💐 Galería de Perfumes L'BEL - Sinergia REA. Descubre nuestra colección exclusiva de fragancias para San Valentín 2026. ¡Consulta sin compromiso!">
+    <meta name="keywords" content="perfumes L'BEL, fragancias San Valentín, Miss L'BEL, Bleu Intense, perfumes Veracruz, Sinergia REA">
+    <meta name="author" content="Sinergia REA">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="💐 Perfumes L'BEL - Especial San Valentín | Sinergia REA">
+    <meta property="og:description" content="Descubre nuestra colección exclusiva de perfumes L'BEL. ¡El regalo perfecto para San Valentín!">
+    <meta property="og:type" content="website">
+    
+    <title>💐 Galería de Perfumes L'BEL | Sinergia REA - San Valentín 2026</title>
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #d53f8c;
+            --success: #25D366;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 20px;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* ========== ANIMACIONES CSS ========== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes float {
+            from { transform: rotate(0deg) translateX(0); }
+            to { transform: rotate(360deg) translateX(50px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
+        }
+
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotate(-180deg) scale(0); }
+            to { opacity: 1; transform: rotate(0) scale(1); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+        }
+
+        /* ========== BOTÓN VOLVER ========== */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            animation: fadeInUp 0.6s ease-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        /* ========== WHATSAPP FLOTANTE ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: var(--success);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+            z-index: 9999;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 45px rgba(37, 211, 102, 0.8);
+        }
+
+        .whatsapp-float svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        /* ========== CONTENEDOR PRINCIPAL ========== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: scaleIn 0.8s ease-out;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s linear infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .logo-container img {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            color: white;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            font-weight: 900;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.95);
+            font-size: 1em;
+            margin-top: 8px;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        /* ========== CONTENIDO GALERÍA ========== */
+        .gallery-content {
+            padding: 40px 30px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .gallery-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .gallery-header h2 .emoji {
+            animation: heartbeat 2s infinite;
+            display: inline-block;
+        }
+
+        .gallery-header p {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .gallery-subtitle {
+            font-size: 1em;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* ========== GRID DE GALERÍA ========== */
+        .perfume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .perfume-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            animation: scaleIn 0.6s ease-out backwards;
+            cursor: pointer;
+        }
+
+        .perfume-card:nth-child(1) { animation-delay: 0.1s; }
+        .perfume-card:nth-child(2) { animation-delay: 0.2s; }
+        .perfume-card:nth-child(3) { animation-delay: 0.3s; }
+        .perfume-card:nth-child(4) { animation-delay: 0.4s; }
+        .perfume-card:nth-child(5) { animation-delay: 0.5s; }
+        .perfume-card:nth-child(6) { animation-delay: 0.6s; }
+        .perfume-card:nth-child(7) { animation-delay: 0.7s; }
+        .perfume-card:nth-child(8) { animation-delay: 0.8s; }
+        .perfume-card:nth-child(9) { animation-delay: 0.9s; }
+        .perfume-card:nth-child(10) { animation-delay: 1s; }
+        .perfume-card:nth-child(11) { animation-delay: 1.1s; }
+
+        .perfume-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .perfume-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #f093fb, #f5576c, #667eea);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .perfume-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .perfume-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffd6e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .perfume-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+            transition: transform 0.4s ease;
+            will-change: transform;
+            max-width: none;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .perfume-card:hover .perfume-image img {
+            transform: scale(1.08);
+            transform-origin: center center;
+        }
+
+        .perfume-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #f5576c, #f093fb);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(245,87,108,0.4);
+            animation: pulse 2s infinite;
+            z-index: 10;
+        }
+
+        .perfume-info {
+            padding: 20px;
+        }
+
+        .perfume-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .perfume-category {
+            color: var(--accent);
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .perfume-description {
+            color: #666;
+            font-size: 0.85em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .perfume-notes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .note-tag {
+            background: linear-gradient(135deg, #f5f7fa, #e2e8f0);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            color: #667eea;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .note-tag:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .perfume-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3em;
+            color: #e53e3e;
+            font-weight: 900;
+            animation: heartbeat 2s infinite;
+        }
+
+        .perfume-cta {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .perfume-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102,126,234,0.4);
+        }
+
+        /* ========== MODAL ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.3s ease-out;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 20px;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            animation: scaleIn 0.3s ease-out;
+        }
+
+        .modal-image {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 50vh;
+            object-fit: contain;
+            margin: 0 auto;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .modal-info {
+            padding: 30px;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 35px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(0,0,0,0.8);
+            transform: rotate(90deg);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            font-size: 0.95em;
+            animation: fadeInUp 1s ease-out backwards;
+            animation-delay: 1.5s;
+        }
+
+        .footer strong {
+            font-size: 1.1em;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* ========== RESPONSIVE MOBILE ========== */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .back-button {
+                top: 10px;
+                right: 10px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+            .whatsapp-float svg {
+                width: 35px;
+                height: 35px;
+            }
+            .container { border-radius: 20px; }
+            .header { padding: 20px 15px; }
+            .header h1 { font-size: 1.5em; }
+            .header p { font-size: 0.9em; }
+            .logo-container img { width: 80px; }
+            .gallery-content { padding: 25px 15px; }
+            .gallery-header h2 { font-size: 1.8em; }
+            .gallery-header p { font-size: 0.95em; }
+            .perfume-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            .perfume-image { height: 250px; }
+            .perfume-info { padding: 15px; }
+            .perfume-name { font-size: 1.2em; }
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+            .modal-image { max-height: 40vh; }
+            .modal-info { padding: 20px; }
+            .footer {
+                font-size: 0.85em;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 { font-size: 1.3em; }
+            .gallery-header h2 { font-size: 1.5em; }
+            .perfume-grid { grid-template-columns: 1fr; }
+            .perfume-image { height: 280px; }
+            .modal-image { max-height: 35vh; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón Volver -->
+    <a href="index.html" class="back-button">
+        ← Volver
+    </a>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesan%20los%20perfumes%20L%27BEL%20%F0%9F%92%90" 
+       class="whatsapp-float" 
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.832.748 5.484 2.048 7.776L0 32l8.384-2.176A15.938 15.938 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.336c-2.528 0-4.908-.688-6.952-1.888l-.496-.296-5.152 1.352 1.376-5.024-.328-.516A13.252 13.252 0 0 1 2.664 16C2.664 8.636 8.636 2.664 16 2.664S29.336 8.636 29.336 16 23.364 29.336 16 29.336zm7.292-9.952c-.4-.2-2.364-1.168-2.732-1.3-.368-.132-.636-.2-.904.2-.268.4-1.036 1.3-1.272 1.568-.236.268-.472.3-.872.1-.4-.2-1.688-.62-3.216-1.984-1.188-1.06-1.992-2.368-2.224-2.768-.232-.4-.024-.616.176-.816.18-.18.4-.472.6-.708.2-.236.268-.4.4-.668.132-.268.068-.5-.032-.7-.1-.2-.904-2.176-1.24-2.98-.328-.784-.66-.676-.904-.688-.232-.012-.5-.016-.768-.016s-.7.1-1.068.5c-.368.4-1.404 1.372-1.404 3.348s1.436 3.884 1.636 4.152c.2.268 2.82 4.304 6.832 6.036.956.412 1.704.66 2.288.844.96.304 1.836.26 2.528.156.772-.116 2.364-.968 2.696-1.9.332-.932.332-1.732.232-1.9-.1-.168-.368-.268-.768-.468z"/>
+        </svg>
+    </a>
+    
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo-container">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Sinergia REA" style="display:none;">
+            </div>
+            <h1>💐 Galería de Perfumes L'BEL 💐</h1>
+            <p>✨ Especial San Valentín 2026 ✨</p>
+        </div>
+
+        <!-- CONTENIDO GALERÍA -->
+        <div class="gallery-content">
+            <div class="gallery-header">
+                <h2><span class="emoji">🌹</span> Nuestra Colección Exclusiva <span class="emoji">🌹</span></h2>
+                <p>Descubre fragancias únicas para cada momento especial 💝</p>
+                <p class="gallery-subtitle">💬 Contamos con muestrario de aromas - ¡Consulta sin compromiso!</p>
+            </div>
+
+            <!-- GRID DE PERFUMES -->
+            <div class="perfume-grid">
+                <!-- Perfume 1 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/1.jpeg" alt="Miss L'BEL Elegance" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">⭐ Bestseller</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👩 Para Ella</div>
+                        <h3 class="perfume-name">Miss L'BEL</h3>
+                        <p class="perfume-description">
+                            Inspirada en el encanto de Francia 🇫🇷 Aroma floral frutal con esencia de alta perfumería francesa.
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🌸 Jazmín</span>
+                            <span class="note-tag">🌹 Rosa</span>
+                            <span class="note-tag">🍋 Cítricos</span>
+                        </div>
+                        <div class="perfume-price">💰 $380</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 2 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/2.jpeg" alt="Live Adventure" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">🆕 Nuevo</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👨 Para Él</div>
+                        <h3 class="perfume-name">Live Adventure</h3>
+                        <p class="perfume-description">
+                            Fuerza y vitalidad para ir más allá ⚡ Creada por Isaac Sinclair en Francia 🇫🇷
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🌿 Menta</span>
+                            <span class="note-tag">💜 Lavanda</span>
+                            <span class="note-tag">🌰 Nuez moscada</span>
+                        </div>
+                        <div class="perfume-price">💰 $380</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 3 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/3.jpeg" alt="YOU Eau de Toilette" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">✨ Edición Limitada</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👫 Unisex</div>
+                        <h3 class="perfume-name">YOU Eau de Toilette</h3>
+                        <p class="perfume-description">
+                            Celebra tu autenticidad ✨ Aroma frutal para quienes viven la vida a su manera 🎉
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🍊 Bergamota</span>
+                            <span class="note-tag">🍊 Mandarina</span>
+                            <span class="note-tag">🍋 Toronja</span>
+                            <span class="note-tag">💜 Lavanda</span>
+                        </div>
+                        <div class="perfume-price">💰 $300</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 4 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/4.jpeg" alt="Familia Bleu" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">💎 Premium</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👨 Para Él</div>
+                        <h3 class="perfume-name">Familia Bleu</h3>
+                        <p class="perfume-description">
+                            🌊 Bleu Intense: Poderoso como las olas • Bleu Night: Energía y frescura del mar
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🌲 Cedro</span>
+                            <span class="note-tag">🥃 Ámbar</span>
+                            <span class="note-tag">🌊 Acuático</span>
+                        </div>
+                        <div class="perfume-price">💰 $380 c/u</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 5 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/5.jpeg" alt="Bleu Night" loading="lazy">
+                    </div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👨 Para Él</div>
+                        <h3 class="perfume-name">Bleu Night</h3>
+                        <p class="perfume-description">
+                            🌙 Dueño de la noche • Creado por Pascal Gaurin 🇫🇷 Poder de seducción absoluto
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🌊 Acuático</span>
+                            <span class="note-tag">🌿 Salvia</span>
+                            <span class="note-tag">🌲 Cedro</span>
+                        </div>
+                        <div class="perfume-price">💰 $380</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 6 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/6.jpeg" alt="Bleu Intense" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">🔥 #1 L'BEL</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👨 Para Él</div>
+                        <h3 class="perfume-name">Bleu Intense</h3>
+                        <p class="perfume-description">
+                            🏆 El Perfume Nº1 de L'BEL • Aroma herbal fresco de muy alta concentración ⚡
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🌿 Herbal</span>
+                            <span class="note-tag">🫐 Bayas negras</span>
+                            <span class="note-tag">🌰 Haba tonka</span>
+                        </div>
+                        <div class="perfume-price">💰 $380</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 7 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/7.jpeg" alt="Línea Live" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">⭐ Bestseller</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">🌿 Línea Live</div>
+                        <h3 class="perfume-name">Aroma Herbal</h3>
+                        <p class="perfume-description">
+                            🌿 Fragancia romántica y natural • Perfecta para el día a día ☀️
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🌿 Tomillo</span>
+                            <span class="note-tag">🍊 Bergamota</span>
+                            <span class="note-tag">🥃 Ámbar</span>
+                        </div>
+                        <div class="perfume-price">💰 $380 c/u</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 8 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/8.jpeg" alt="Live Frontier" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">🆕 Nuevo</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👨 Para Él</div>
+                        <h3 class="perfume-name">Live Frontier</h3>
+                        <p class="perfume-description">
+                            ✨ Creado por Jacques Huclier 🇫🇷 Frescura cítrica con maderas ambaradas intensas
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🍊 Bergamota</span>
+                            <span class="note-tag">🌲 Maderas</span>
+                            <span class="note-tag">💫 Musk</span>
+                        </div>
+                        <div class="perfume-price">💰 $380</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 9 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/9.jpeg" alt="Bleu Glacial" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">❄️ Intenso</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👨 Para Él</div>
+                        <h3 class="perfume-name">Bleu Glacial</h3>
+                        <p class="perfume-description">
+                            ❄️ Fuerza de la naturaleza • Frescura helada con corazón amaderado 🌲
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🌲 Pino siberiano</span>
+                            <span class="note-tag">❄️ Menta helada</span>
+                            <span class="note-tag">🌳 Amaderado</span>
+                        </div>
+                        <div class="perfume-price">💰 $380</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 10 -->
+                <div class="perfume-card" onclick="openModal(this)">
+                    <div class="perfume-image">
+                        <img src="img/11.jpeg" alt="Miss L'BEL Elegance" loading="lazy">
+                    </div>
+                    <div class="perfume-badge">⭐ Bestseller</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">👩 Para Ella</div>
+                        <h3 class="perfume-name">Miss L'BEL Elegance</h3>
+                        <p class="perfume-description">
+                            💐 Elegancia francesa • Floral frutal con frambuesa, neroli y vainilla 🍦
+                        </p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">🍓 Frambuesa</span>
+                            <span class="note-tag">🌸 Neroli</span>
+                            <span class="note-tag">🍦 Vainilla</span>
+                        </div>
+                        <div class="perfume-price">💰 $380</div>
+                        <button class="perfume-cta">Ver detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>✨ ¡Encuentra tu fragancia perfecta! ✨</p>
+            <strong>📍 Sinergia REA - ¡Click solucionado!</strong>
+            <p style="margin-top: 10px; font-size: 0.9em;">💬 Contamos con muestrario - Consulta sin compromiso</p>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="perfumeModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <div class="modal-info">
+                <div id="modalCategory" class="perfume-category"></div>
+                <h3 id="modalName" class="perfume-name"></h3>
+                <p id="modalDescription" class="perfume-description"></p>
+                <div id="modalNotes" class="perfume-notes"></div>
+                <div id="modalPrice" class="perfume-price"></div>
+                <button id="modalWhatsAppBtn" class="perfume-cta" style="margin-top: 20px;">💬 ¡Me interesa!</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(cardEl) {
+            const modal = document.getElementById('perfumeModal');
+            if (!modal || !cardEl) return;
+
+            const modalImage = modal.querySelector('#modalImage');
+            const sourceImg = cardEl.querySelector('.perfume-image img');
+            if (sourceImg) {
+                modalImage.src = sourceImg.src;
+                modalImage.alt = sourceImg.alt || '';
+            }
+
+            modal.querySelector('#modalName').textContent = cardEl.querySelector('.perfume-name')?.textContent || 'Perfume';
+            modal.querySelector('#modalCategory').textContent = cardEl.querySelector('.perfume-category')?.textContent || '';
+            modal.querySelector('#modalDescription').textContent = cardEl.querySelector('.perfume-description')?.textContent || '';
+            modal.querySelector('#modalNotes').innerHTML = cardEl.querySelector('.perfume-notes')?.innerHTML || '';
+            modal.querySelector('#modalPrice').textContent = cardEl.querySelector('.perfume-price')?.textContent || '';
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+
+            const waNumber = '525645003181';
+            const whatsappBtn = modal.querySelector('#modalWhatsAppBtn');
+            if (whatsappBtn) {
+                whatsappBtn.onclick = function (e) {
+                    e.preventDefault();
+                    const name = modal.querySelector('#modalName')?.textContent.trim() || '';
+                    const message = `Hola, me interesa el perfume: ${name} 💐`;
+                    const encoded = encodeURIComponent(message);
+                    const waWeb = 'https://wa.me/' + waNumber + '?text=' + encoded;
+                    const waApp = 'whatsapp://send?text=' + encoded;
+
+                    closeModal();
+
+                    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                    if (isMobile) {
+                        window.location.href = waApp;
+                        setTimeout(function() {
+                            window.open(waWeb, '_blank', 'noopener');
+                        }, 600);
+                    } else {
+                        window.open(waWeb, '_blank', 'noopener');
+                    }
+
+                    whatsappBtn.disabled = true;
+                    setTimeout(() => { whatsappBtn.disabled = false; }, 2000);
+                };
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('perfumeModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') closeModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const userInputs = document.querySelectorAll('input, textarea');
+            userInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    this.value = this.value.replace(/<script[^>]*>.*?<\/script>/gi, '');
+                });
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.perfume-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
