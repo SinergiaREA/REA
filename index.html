@@ -270,6 +270,20 @@
             position: relative;
             overflow: hidden;
             animation: slideInLeft 0.8s ease-out;
+            transition: background 0.8s ease;
+        }
+
+        /* Temas de header por período del día */
+        .header.morning-theme {
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a56 50%, #ff6b6b 100%);
+        }
+
+        .header.afternoon-theme {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .header.night-theme {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #1a0033 100%);
         }
 
         .header::before {
@@ -339,6 +353,20 @@
             position: relative;
             overflow: hidden;
             animation: fadeInUp 1s ease-out 0.8s backwards;
+            transition: background 0.8s ease;
+        }
+
+        /* Temas de hero-section por período del día */
+        .hero-section.morning-theme {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe5cc 50%, #ffd4a3 100%);
+        }
+
+        .hero-section.afternoon-theme {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe5ec 100%);
+        }
+
+        .hero-section.night-theme {
+            background: linear-gradient(135deg, #e8d5ff 0%, #d4c5e8 50%, #b5a3d0 100%);
         }
 
         .hero-section::before {
@@ -349,6 +377,63 @@
             top: -50px;
             right: -50px;
             animation: pulse 4s infinite;
+        }
+
+        /* Bolitas giratorias decorativas */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -50px;
+            left: -50px;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.25) 8px, transparent 8px),
+                radial-gradient(circle at 60% 70%, rgba(192, 108, 132, 0.25) 10px, transparent 10px),
+                radial-gradient(circle at 80% 20%, rgba(165, 68, 101, 0.25) 12px, transparent 12px),
+                radial-gradient(circle at 15% 80%, rgba(255, 182, 193, 0.2) 9px, transparent 9px),
+                radial-gradient(circle at 75% 50%, rgba(255, 105, 180, 0.2) 11px, transparent 11px);
+            background-size: 120px 120px;
+            background-repeat: repeat;
+            animation: rotateBubbles 25s linear infinite;
+            pointer-events: none;
+            filter: blur(0.5px);
+            transition: background-image 0.8s ease;
+        }
+
+        /* Bolitas para tema Mañana - Doradas y Anaranjadas */
+        .hero-section.morning-theme::after {
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.25) 8px, transparent 8px),
+                radial-gradient(circle at 60% 70%, rgba(255, 165, 0, 0.25) 10px, transparent 10px),
+                radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.25) 12px, transparent 12px),
+                radial-gradient(circle at 15% 80%, rgba(255, 200, 100, 0.2) 9px, transparent 9px),
+                radial-gradient(circle at 75% 50%, rgba(255, 180, 50, 0.2) 11px, transparent 11px);
+        }
+
+        /* Bolitas para tema Tarde - Rosa y Magenta */
+        .hero-section.afternoon-theme::after {
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.25) 8px, transparent 8px),
+                radial-gradient(circle at 60% 70%, rgba(192, 108, 132, 0.25) 10px, transparent 10px),
+                radial-gradient(circle at 80% 20%, rgba(165, 68, 101, 0.25) 12px, transparent 12px),
+                radial-gradient(circle at 15% 80%, rgba(255, 182, 193, 0.2) 9px, transparent 9px),
+                radial-gradient(circle at 75% 50%, rgba(255, 105, 180, 0.2) 11px, transparent 11px);
+        }
+
+        /* Bolitas para tema Noche - Azul y Púrpura */
+        .hero-section.night-theme::after {
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.25) 8px, transparent 8px),
+                radial-gradient(circle at 60% 70%, rgba(118, 75, 162, 0.25) 10px, transparent 10px),
+                radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.25) 12px, transparent 12px),
+                radial-gradient(circle at 15% 80%, rgba(153, 102, 204, 0.2) 9px, transparent 9px),
+                radial-gradient(circle at 75% 50%, rgba(75, 0, 130, 0.2) 11px, transparent 11px);
+        }
+
+        @keyframes rotateBubbles {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1); }
         }
 
         .countdown-container {
@@ -1052,9 +1137,22 @@
             z-index: 99999;
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
+            transition: opacity 0.6s ease, visibility 0.6s ease, background 0.8s ease;
             flex-direction: column;
             gap: 30px;
+        }
+
+        /* Temas por período del día */
+        .valentine-loader.morning {
+            background: linear-gradient(135deg, #ffd89b 0%, #ff9a56 50%, #ff6b6b 100%);
+        }
+
+        .valentine-loader.afternoon {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #a54465 100%);
+        }
+
+        .valentine-loader.night {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #1a0033 100%);
         }
 
         .valentine-loader.hidden {
@@ -1204,11 +1302,12 @@
 
         .particle {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.5);
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
             animation: floatParticle 8s infinite;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
         }
 
         @keyframes floatParticle {
@@ -1218,20 +1317,35 @@
             100% { transform: translateY(-100vh) translateX(100px) rotate(360deg); opacity: 0; }
         }
 
-        /* Efecto glitter */
+        /* Estrellas brillantes */
+        .star {
+            position: absolute;
+            font-size: 20px;
+            animation: floatStar 10s infinite ease-in-out;
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
+        }
+
+        @keyframes floatStar {
+            0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-120vh) translateX(150px) rotate(360deg) scale(0.5); opacity: 0; }
+        }
+
+        /* Efecto glitter mejorado */
         .glitter {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 6px;
+            height: 6px;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.95);
             animation: twinkleGlitter 1.5s ease-in-out infinite;
         }
 
         @keyframes twinkleGlitter {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
@@ -1572,28 +1686,34 @@
             
             const greetingElement = document.getElementById('dynamicGreeting');
             const subtitleElement = document.getElementById('dynamicSubtitle');
+            const headerElement = document.querySelector('.header');
+            const heroElement = document.querySelector('.hero-section');
             
             let greeting = '';
             let emoji = '';
             let subtitle = '';
+            let themeClass = '';
             
-            // 12 AM - 12 PM: Buenos días
-            if (hour >= 0 && hour < 12) {
+            // 6 AM - 12 PM: Buenos días
+            if (hour >= 6 && hour < 12) {
                 greeting = '¡Buenos días!';
                 emoji = '🌅';
                 subtitle = '💫 ¡Excelente inicio de día! Que tengas un día productivo 🎉';
+                themeClass = 'morning-theme';
             } 
             // 12 PM - 6 PM: Buenas tardes
             else if (hour >= 12 && hour < 18) {
                 greeting = '¡Buenas tardes!';
                 emoji = '☀️';
                 subtitle = '🌟 ¡Esperamos que tu tarde sea maravillosa! ✨';
+                themeClass = 'afternoon-theme';
             } 
-            // 6 PM - 12 AM: Buenas noches
+            // 6 PM - 6 AM: Buenas noches
             else {
                 greeting = '¡Buenas noches!';
                 emoji = '🌙';
                 subtitle = '⭐ ¡Que tengas una noche tranquila y agradable! 💫';
+                themeClass = 'night-theme';
             }
             
             // Actualizar el DOM
@@ -1602,6 +1722,14 @@
             }
             if (subtitleElement) {
                 subtitleElement.innerHTML = subtitle;
+            }
+            if (headerElement) {
+                headerElement.classList.remove('morning-theme', 'afternoon-theme', 'night-theme');
+                headerElement.classList.add(themeClass);
+            }
+            if (heroElement) {
+                heroElement.classList.remove('morning-theme', 'afternoon-theme', 'night-theme');
+                heroElement.classList.add(themeClass);
             }
         }
         
@@ -1759,6 +1887,25 @@
             const particlesContainer = document.getElementById('particlesContainer');
             const valentineLoader = document.getElementById('valentineLoader');
 
+            // Detectar período del día y aplicar tema
+            function applyDayTheme() {
+                const now = new Date();
+                const mexicoTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Mexico_City"}));
+                const hour = mexicoTime.getHours();
+
+                // Remover todas las clases de tema
+                valentineLoader.classList.remove('morning', 'afternoon', 'night');
+
+                // Aplicar tema según la hora
+                if (hour >= 6 && hour < 12) {
+                    valentineLoader.classList.add('morning');
+                } else if (hour >= 12 && hour < 18) {
+                    valentineLoader.classList.add('afternoon');
+                } else {
+                    valentineLoader.classList.add('night');
+                }
+            }
+
             // Crear corazones flotantes
             function createFloatingHearts() {
                 const heartEmojis = ['💕', '💖', '💗', '💝', '💓'];
@@ -1785,9 +1932,9 @@
                 setTimeout(createFloatingHearts, 1500);
             }
 
-            // Crear partículas flotantes
+            // Crear partículas flotantes mejoradas
             function createParticles() {
-                const particleCount = 20;
+                const particleCount = 25;
 
                 for (let i = 0; i < particleCount; i++) {
                     const particle = document.createElement('div');
@@ -1796,13 +1943,39 @@
                     const randomLeft = Math.random() * 100;
                     const randomDelay = Math.random() * 8;
                     const randomDuration = 8 + Math.random() * 4;
+                    const randomSize = 5 + Math.random() * 6;
 
                     particle.style.left = randomLeft + '%';
                     particle.style.bottom = Math.random() * 100 + 'vh';
+                    particle.style.width = randomSize + 'px';
+                    particle.style.height = randomSize + 'px';
                     particle.style.animation = `floatParticle ${randomDuration}s infinite`;
                     particle.style.animationDelay = randomDelay + 's';
 
                     particlesContainer.appendChild(particle);
+                }
+            }
+
+            // Crear estrellas brillantes
+            function createStars() {
+                const starEmojis = ['⭐', '✨', '💫'];
+                const starCount = 12;
+
+                for (let i = 0; i < starCount; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
+                    
+                    const randomLeft = Math.random() * 100;
+                    const randomDelay = Math.random() * 6;
+                    const randomDuration = 8 + Math.random() * 3;
+
+                    star.style.left = randomLeft + '%';
+                    star.style.bottom = Math.random() * 100 + 'vh';
+                    star.style.animation = `floatStar ${randomDuration}s ease-in-out infinite`;
+                    star.style.animationDelay = randomDelay + 's';
+
+                    particlesContainer.appendChild(star);
                 }
             }
 
@@ -1828,8 +2001,10 @@
             }
 
             // Inicializar animaciones
+            applyDayTheme();
             createFloatingHearts();
             createParticles();
+            createStars();
             createGlitter();
 
             // Ocultar loader después de 8 segundos
