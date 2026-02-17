@@ -1,106 +1,199 @@
-// Código JS extraído para inicializar el loader
-function initializeValentineLoader() {
-    const heartsContainer = document.getElementById('heartsContainer');
-    const particlesContainer = document.getElementById('particlesContainer');
-    const valentineLoader = document.getElementById('valentineLoader');
+﻿// ========== LOADER OPTIMIZADO - DÍA DE LA BANDERA ==========
+(function() {
+    'use strict';
 
+    // Configuración centralizada
+    const config = {
+        // Se omite 🇲🇽 porque en algunos equipos se muestra como texto "MX".
+        emojis: ['🪅', '🎺', '🌵', '🎉', '🎗️', '🤍', '❤️', '💚', '🌶️', '🦅', '🎖️'],
+        starEmojis: ['⭐', '✨', '🌟'],
+        colors: ['#006847', '#ffffff', '#CE1126'],
+        heartCount: 16,
+        particleCount: 24,
+        starCount: 9,
+        glitterCount: 8,
+        loaderDuration: 6500
+    };
+    let loaderActive = true;
+
+    // Elementos del DOM
+    const elements = {
+        loader: document.getElementById('valentineLoader'),
+        heartsContainer: document.getElementById('heartsContainer'),
+        particlesContainer: document.getElementById('particlesContainer')
+    };
+
+    // ========== TEMAS POR HORA DEL DÍA ==========
     function applyDayTheme() {
         const now = new Date();
         const mexicoTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Mexico_City"}));
         const hour = mexicoTime.getHours();
-        valentineLoader.classList.remove('morning','afternoon','night');
-        if (hour >= 6 && hour < 12) valentineLoader.classList.add('morning');
-        else if (hour >= 12 && hour < 18) valentineLoader.classList.add('afternoon');
-        else valentineLoader.classList.add('night');
+        
+        elements.loader.classList.remove('morning', 'afternoon', 'night');
+        
+        if (hour >= 6 && hour < 12) {
+            elements.loader.classList.add('morning');
+        } else if (hour >= 12 && hour < 18) {
+            elements.loader.classList.add('afternoon');
+        } else {
+            elements.loader.classList.add('night');
+        }
     }
 
+    // ========== CREAR ELEMENTOS ANIMADOS ==========
+    function createAnimatedElement(type, options) {
+        const element = document.createElement('div');
+        element.className = type;
+        
+        Object.assign(element.style, {
+            left: `${Math.random() * 100}%`,
+            bottom: options.bottom || `${-30 - Math.random() * 50}px`,
+            fontSize: options.fontSize || `${14 + Math.random() * 26}px`,
+            animationDelay: `${Math.random() * (options.maxDelay || 2.5)}s`,
+            animationDuration: options.duration || `${2.6 + Math.random() * 2.2}s`
+        });
+        
+        if (options.content) {
+            element.textContent = options.content;
+        }
+        
+        if (options.background) {
+            element.style.background = options.background;
+        }
+        
+        if (options.size) {
+            element.style.width = `${options.size}px`;
+            element.style.height = `${options.size}px`;
+        }
+        
+        return element;
+    }
+
+    // ========== CORAZONES FLOTANTES ==========
     function createFloatingHearts() {
-        const heartEmojis = ['💕','💖','💗','💝','💓'];
-        const heartCount = 15;
-        for (let i=0;i<heartCount;i++){
-            const heart = document.createElement('div');
-            heart.className = 'floating-heart';
-            heart.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
-            const randomLeft = Math.random()*100;
-            const randomDelay = Math.random()*2;
-            const randomDuration = 2.5 + Math.random()*1.5;
-            heart.style.left = randomLeft + '%';
-            heart.style.bottom = '-50px';
-            heart.style.animation = `floatUpFade ${randomDuration}s ease-in forwards`;
-            heart.style.animationDelay = randomDelay + 's';
-            heartsContainer.appendChild(heart);
+        if (!loaderActive) return;
+
+        const fragment = document.createDocumentFragment();
+        
+        for (let i = 0; i < config.heartCount; i++) {
+            const emoji = config.emojis[Math.floor(Math.random() * config.emojis.length)];
+            const heart = createAnimatedElement('floating-heart', {
+                content: emoji,
+                maxDelay: 2.2
+            });
+            fragment.appendChild(heart);
         }
-        setTimeout(createFloatingHearts, 1500);
+        
+        elements.heartsContainer.appendChild(fragment);
+        
+        // Recrear hearts continuamente
+        setTimeout(() => {
+            if (loaderActive) createFloatingHearts();
+        }, 1200 + Math.random() * 800);
     }
 
+    // ========== PARTÍCULAS ==========
     function createParticles() {
-        const particleCount = 25;
-        for (let i=0;i<particleCount;i++){
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            const randomLeft = Math.random()*100;
-            const randomDelay = Math.random()*8;
-            const randomDuration = 8 + Math.random()*4;
-            const randomSize = 5 + Math.random()*6;
-            particle.style.left = randomLeft + '%';
-            particle.style.bottom = Math.random()*100 + 'vh';
-            particle.style.width = randomSize + 'px';
-            particle.style.height = randomSize + 'px';
-            particle.style.animation = `floatParticle ${randomDuration}s infinite`;
-            particle.style.animationDelay = randomDelay + 's';
-            particlesContainer.appendChild(particle);
+        const fragment = document.createDocumentFragment();
+        
+        for (let i = 0; i < config.particleCount; i++) {
+            const randomSize = 4 + Math.random() * 7;
+            const randomColor = config.colors[Math.floor(Math.random() * config.colors.length)];
+            
+            const particle = createAnimatedElement('particle', {
+                background: randomColor,
+                size: randomSize,
+                bottom: `${Math.random() * 100}vh`,
+                maxDelay: 8,
+                duration: `${8 + Math.random() * 4}s`
+            });
+            
+            fragment.appendChild(particle);
         }
+        
+        elements.particlesContainer.appendChild(fragment);
     }
 
-    function createStars(){
-        const starEmojis = ['⭐','✨','💫'];
-        const starCount = 12;
-        for (let i=0;i<starCount;i++){
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.textContent = starEmojis[Math.floor(Math.random()*starEmojis.length)];
-            const randomLeft = Math.random()*100;
-            const randomDelay = Math.random()*6;
-            const randomDuration = 8 + Math.random()*3;
-            star.style.left = randomLeft + '%';
-            star.style.bottom = Math.random()*100 + 'vh';
-            star.style.animation = `floatStar ${randomDuration}s ease-in-out infinite`;
-            star.style.animationDelay = randomDelay + 's';
-            particlesContainer.appendChild(star);
+    // ========== ESTRELLAS ==========
+    function createStars() {
+        const fragment = document.createDocumentFragment();
+        
+        for (let i = 0; i < config.starCount; i++) {
+            const emoji = config.starEmojis[Math.floor(Math.random() * config.starEmojis.length)];
+            
+            const star = createAnimatedElement('star', {
+                content: emoji,
+                bottom: `${Math.random() * 100}vh`,
+                maxDelay: 6,
+                duration: `${8 + Math.random() * 3}s`
+            });
+            
+            fragment.appendChild(star);
         }
+        
+        elements.particlesContainer.appendChild(fragment);
     }
 
-    function createGlitter(){
-        const glitterCount = 8;
-        for (let i=0;i<glitterCount;i++){
-            const glitter = document.createElement('div');
-            glitter.className = 'glitter';
-            const randomLeft = Math.random()*100;
-            const randomTop = Math.random()*100;
-            const randomDelay = Math.random()*1.5;
-            glitter.style.left = randomLeft + '%';
-            glitter.style.top = randomTop + '%';
-            glitter.style.animation = `twinkleGlitter 1.5s ease-in-out infinite`;
-            glitter.style.animationDelay = randomDelay + 's';
-            particlesContainer.appendChild(glitter);
+    // ========== BRILLOS ==========
+    function createGlitter() {
+        const fragment = document.createDocumentFragment();
+        
+        for (let i = 0; i < config.glitterCount; i++) {
+            const glitter = createAnimatedElement('glitter', {
+                maxDelay: 1.5,
+                duration: '1.8s'
+            });
+            
+            glitter.style.top = `${Math.random() * 100}%`;
+            glitter.style.bottom = 'auto';
+            
+            fragment.appendChild(glitter);
         }
+        
+        elements.particlesContainer.appendChild(fragment);
     }
 
-    applyDayTheme();
-    createFloatingHearts();
-    createParticles();
-    createStars();
-    createGlitter();
+    // ========== OCULTAR LOADER ==========
+    function hideLoader() {
+        setTimeout(() => {
+            elements.loader.classList.add('hidden');
+            loaderActive = false;
 
-    // Ocultar loader después de 8 segundos
-    setTimeout(() => {
-        valentineLoader.classList.add('hidden');
-    }, 8000);
-}
+            setTimeout(() => {
+                elements.heartsContainer.textContent = '';
+                elements.particlesContainer.textContent = '';
+            }, 700);
+        }, config.loaderDuration);
+    }
 
-// Inicializar cuando DOM esté listo
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeValentineLoader);
-} else {
-    initializeValentineLoader();
-}
+    // ========== INICIALIZACIÓN ==========
+    function init() {
+        if (!elements.loader || !elements.heartsContainer || !elements.particlesContainer) {
+            console.error('Loader: Required elements not found');
+            return;
+        }
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            config.heartCount = 6;
+            config.particleCount = 10;
+            config.starCount = 4;
+            config.glitterCount = 4;
+            config.loaderDuration = 1800;
+        }
+
+        applyDayTheme();
+        createFloatingHearts();
+        createParticles();
+        createStars();
+        createGlitter();
+        hideLoader();
+    }
+
+    // Inicializar cuando DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+

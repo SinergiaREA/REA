@@ -3,26 +3,123 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Loader - Sinergia REA (San Valentín)</title>
+    <title>Loader - Día de la Bandera (24 de febrero) - Sinergia REA</title>
     <link rel="stylesheet" href="assets/loader.css">
 </head>
 <body>
-
-    <!-- Loader extraído -->
+    <!-- Loader optimizado para Día de la Bandera -->
     <div class="valentine-loader" id="valentineLoader">
         <div class="loader-particles" id="particlesContainer"></div>
         <div class="floating-hearts" id="heartsContainer"></div>
         <div class="loader-content">
             <div class="heart-spinner">
-                <div class="heart-center">💗</div>
+                <div class="heart-center">
+                    <div class="mexico-flag" role="img" aria-label="Bandera de México">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <!-- Escudo Nacional Mejorado -->
+                            <!-- Laurel branches (izquierda) -->
+                            <g id="laurel-left">
+                                <path d="M35,135 Q40,125 45,115 Q50,105 55,95 Q58,88 60,82" 
+                                      fill="none" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/>
+                                <ellipse cx="38" cy="132" rx="3" ry="5" fill="#388e3c" transform="rotate(-30 38 132)"/>
+                                <ellipse cx="43" cy="122" rx="3" ry="5" fill="#388e3c" transform="rotate(-25 43 122)"/>
+                                <ellipse cx="48" cy="112" rx="3" ry="5" fill="#388e3c" transform="rotate(-20 48 112)"/>
+                                <ellipse cx="53" cy="102" rx="3" ry="5" fill="#388e3c" transform="rotate(-15 53 102)"/>
+                                <ellipse cx="57" cy="92" rx="3" ry="5" fill="#388e3c" transform="rotate(-10 57 92)"/>
+                            </g>
+                            
+                            <!-- Oak branches (derecha) -->
+                            <g id="oak-right">
+                                <path d="M165,135 Q160,125 155,115 Q150,105 145,95 Q142,88 140,82" 
+                                      fill="none" stroke="#2e7d32" stroke-width="4" stroke-linecap="round"/>
+                                <ellipse cx="162" cy="132" rx="3" ry="5" fill="#388e3c" transform="rotate(30 162 132)"/>
+                                <ellipse cx="157" cy="122" rx="3" ry="5" fill="#388e3c" transform="rotate(25 157 122)"/>
+                                <ellipse cx="152" cy="112" rx="3" ry="5" fill="#388e3c" transform="rotate(20 152 112)"/>
+                                <ellipse cx="147" cy="102" rx="3" ry="5" fill="#388e3c" transform="rotate(15 147 102)"/>
+                                <ellipse cx="143" cy="92" rx="3" ry="5" fill="#388e3c" transform="rotate(10 143 92)"/>
+                            </g>
+                            
+                            <!-- Nopal (prickly pear cactus) mejorado -->
+                            <g id="nopal">
+                                <ellipse cx="100" cy="115" rx="35" ry="25" fill="#2e7d32"/>
+                                <ellipse cx="70" cy="98" rx="16" ry="20" fill="#2e7d32" transform="rotate(-25 70 98)"/>
+                                <ellipse cx="130" cy="98" rx="16" ry="20" fill="#2e7d32" transform="rotate(25 130 98)"/>
+                                <!-- Espinas del nopal -->
+                                <line x1="95" y1="110" x2="92" y2="105" stroke="#1b5e20" stroke-width="1.5"/>
+                                <line x1="105" y1="110" x2="108" y2="105" stroke="#1b5e20" stroke-width="1.5"/>
+                                <line x1="100" y1="105" x2="100" y2="100" stroke="#1b5e20" stroke-width="1.5"/>
+                                <line x1="75" y1="95" x2="73" y2="90" stroke="#1b5e20" stroke-width="1.5"/>
+                                <line x1="125" y1="95" x2="127" y2="90" stroke="#1b5e20" stroke-width="1.5"/>
+                            </g>
+                            
+                            <!-- Águila mejorada -->
+                            <g id="eagle">
+                                <!-- Cuerpo del águila -->
+                                <ellipse cx="100" cy="70" rx="18" ry="22" fill="#6d4c41"/>
+                                <!-- Alas -->
+                                <path d="M82,65 Q70,55 65,50 L70,52 Q78,60 85,68" fill="#8d6e63" stroke="#4e342e" stroke-width="1"/>
+                                <path d="M118,65 Q130,55 135,50 L130,52 Q122,60 115,68" fill="#8d6e63" stroke="#4e342e" stroke-width="1"/>
+                                <!-- Cabeza -->
+                                <circle cx="100" cy="60" r="10" fill="#6d4c41"/>
+                                <!-- Pico -->
+                                <path d="M100,60 L105,62 L100,64 Z" fill="#ffd54f"/>
+                                <!-- Ojo -->
+                                <circle cx="103" cy="58" r="2" fill="#1b5e20"/>
+                                <circle cx="103" cy="58" r="0.8" fill="white"/>
+                                <!-- Plumas de la cola -->
+                                <path d="M100,85 L95,95 L98,87" fill="#5d4037"/>
+                                <path d="M100,85 L105,95 L102,87" fill="#5d4037"/>
+                            </g>
+                            
+                            <!-- Serpiente mejorada -->
+                            <g id="snake">
+                                <path d="M105,78 Q108,82 107,87 Q106,91 103,94 Q100,96 96,95" 
+                                      fill="none" stroke="#1b5e20" stroke-width="3.5" stroke-linecap="round"/>
+                                <circle cx="106" cy="78" r="2" fill="#1b5e20"/>
+                                <circle cx="106.5" cy="77.5" r="0.7" fill="#c62828"/>
+                            </g>
+                            
+                            <!-- Listón tricolor mejorado -->
+                            <g id="ribbon" transform="translate(0,145)">
+                                <path d="M30,5 Q100,0 170,5" fill="#006847"/>
+                                <path d="M30,12 Q100,7 170,12" fill="#ffffff" stroke="#e0e0e0" stroke-width="0.5"/>
+                                <path d="M30,19 Q100,14 170,19" fill="#CE1126"/>
+                                <!-- Sombra del listón -->
+                                <path d="M30,22 Q100,17 170,22" fill="rgba(0,0,0,0.1)"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
             </div>
             <div class="loader-text">
-                <span class="loader-brand">✨ SINERGIA REA ✨</span><br>
-                <span class="loader-text-animate">Preparando</span><br>
-                <span class="loader-text-animate">tu regalo especial</span>
+                <div class="sinergia-loader-logo" role="img" aria-label="Logo Sinergia REA">
+                    <div class="logo-wordmark">
+                        <span class="logo-script">Sinergia</span>
+                        <span class="logo-rea">
+                            <span class="logo-r">R</span><span class="logo-e">E</span><span class="logo-a">A</span>
+                        </span>
+                    </div>
+
+                    <div class="logo-tech" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                    </div>
+                </div><br>
+                
+                <span class="loader-text-animate">24 de febrero</span><br>
+                <span class="loader-text-animate">Día de la Bandera de México</span>
             </div>
-            <p class="loader-subtext">✨ Feliz Día de San Valentín ✨</p>
+            <p class="loader-subtext">🎖️ Honrando nuestros colores y nuestra identidad ✨</p>
         </div>
     </div>
 
     <script src="assets/loader.js" defer></script>
+    <script>
+        // Redirect to index.html after loader completes
+        setTimeout(() => {
+            sessionStorage.setItem('loaderShown', 'true');
+            window.location.href = 'index.html';
+        }, 8000);
+    </script>
+</body>
+</html>
