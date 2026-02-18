@@ -529,15 +529,7 @@
         </div>
     </div>
 
-    <script>
-        // Ocultar loader de inmediato si ya se mostró en esta sesión
-        try {
-            if (sessionStorage.getItem('loaderShown') === 'true') {
-                var l = document.getElementById('valentineLoader');
-                if (l) l.style.display = 'none';
-            }
-        } catch(e) {}
-    </script>
+    <script>try{if(sessionStorage.getItem('loaderShown')==='true'){var l=document.getElementById('valentineLoader');if(l)l.style.display='none';}}catch(e){}</script>
     <script src="assets/loader.js"></script>
     <script src="assets/index.js"></script>
 </body>
