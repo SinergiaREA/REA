@@ -11,7 +11,7 @@
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data: blob: https:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';">
     <meta name="format-detection" content="telephone=no">
     
     <!-- SEO & Description -->
@@ -295,6 +295,8 @@
             position: relative;
             animation: scaleIn 0.6s ease-out backwards;
             cursor: pointer;
+            content-visibility: auto;
+            contain-intrinsic-size: 520px;
         }
 
         .perfume-card:nth-child(1) { animation-delay: 0.1s; }
@@ -391,9 +393,14 @@
         }
 
         .perfume-category {
-            color: var(--accent);
+            color: #006847;
+            background: rgba(0, 104, 71, 0.08);
+            border: 1px solid rgba(0, 104, 71, 0.22);
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
             font-size: 0.9em;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -418,18 +425,19 @@
         }
 
         .note-tag {
-            background: linear-gradient(135deg, #f5f7fa, #e2e8f0);
+            background: linear-gradient(135deg, #f4faf7, #e3f2ea);
             padding: 5px 12px;
             border-radius: 15px;
             font-size: 0.75em;
-            color: #667eea;
+            color: #0f5132;
             font-weight: 600;
             transition: all 0.3s ease;
+            border: 1px solid rgba(0, 104, 71, 0.18);
         }
 
         .note-tag:hover {
             transform: scale(1.1);
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #006847, #00a86b);
             color: white;
         }
 
@@ -445,7 +453,7 @@
             margin-top: 15px;
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #006847, #00a86b);
             color: white;
             border: none;
             border-radius: 10px;
@@ -458,7 +466,15 @@
 
         .perfume-cta:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(102,126,234,0.4);
+            box-shadow: 0 10px 25px rgba(0,104,71,0.35);
+        }
+
+        .perfume-card:focus-visible,
+        .perfume-cta:focus-visible,
+        .back-button:focus-visible,
+        .close-modal:focus-visible {
+            outline: 3px solid #ffd700;
+            outline-offset: 3px;
         }
 
         /* ========== MODAL ========== */
@@ -548,6 +564,15 @@
             margin-top: 5px;
         }
 
+        .footer-note {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .modal-cta {
+            margin-top: 20px;
+        }
+
         /* ========== RESPONSIVE MOBILE ========== */
         @media (max-width: 768px) {
             body { padding: 10px; }
@@ -601,6 +626,14 @@
             .perfume-image { height: 280px; }
             .modal-image { max-height: 35vh; }
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -624,7 +657,6 @@
         <!-- HEADER -->
         <div class="header">
             <div class="logo-container">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Sinergia REA" style="display:none;">
             </div>
             <h1>💐 Galería de Perfumes L'BEL 💐</h1>
             <p>🎖️ Celebramos el 24 de febrero, Día de la Bandera de México 🦅</p>
@@ -641,7 +673,7 @@
             <!-- GRID DE PERFUMES -->
             <div class="perfume-grid">
                 <!-- Perfume 1 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/1.jpeg" alt="Miss L'BEL Elegance" loading="lazy">
                     </div>
@@ -663,7 +695,7 @@
                 </div>
 
                 <!-- Perfume 2 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/2.jpeg" alt="Live Adventure" loading="lazy">
                     </div>
@@ -685,7 +717,7 @@
                 </div>
 
                 <!-- Perfume 3 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/3.jpeg" alt="YOU Eau de Toilette" loading="lazy">
                     </div>
@@ -708,7 +740,7 @@
                 </div>
 
                 <!-- Perfume 4 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/4.jpeg" alt="Familia Bleu" loading="lazy">
                     </div>
@@ -730,7 +762,7 @@
                 </div>
 
                 <!-- Perfume 5 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/5.jpeg" alt="Bleu Night" loading="lazy">
                     </div>
@@ -751,7 +783,7 @@
                 </div>
 
                 <!-- Perfume 6 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/6.jpeg" alt="Bleu Intense" loading="lazy">
                     </div>
@@ -773,7 +805,7 @@
                 </div>
 
                 <!-- Perfume 7 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/7.jpeg" alt="Línea Live" loading="lazy">
                     </div>
@@ -795,7 +827,7 @@
                 </div>
 
                 <!-- Perfume 8 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/8.jpeg" alt="Live Frontier" loading="lazy">
                     </div>
@@ -817,7 +849,7 @@
                 </div>
 
                 <!-- Perfume 9 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/9.jpeg" alt="Bleu Glacial" loading="lazy">
                     </div>
@@ -839,7 +871,7 @@
                 </div>
 
                 <!-- Perfume 10 -->
-                <div class="perfume-card" onclick="openModal(this)">
+                <div class="perfume-card">
                     <div class="perfume-image">
                         <img src="img/11.jpeg" alt="Miss L'BEL Elegance" loading="lazy">
                     </div>
@@ -866,14 +898,14 @@
         <div class="footer">
             <p>✨ ¡Encuentra tu fragancia perfecta! ✨</p>
             <strong>📍 Sinergia REA - ¡Click solucionado!</strong>
-            <p style="margin-top: 10px; font-size: 0.9em;">💬 Contamos con muestrario - Consulta sin compromiso</p>
+            <p class="footer-note">💬 Contamos con muestrario - Consulta sin compromiso</p>
         </div>
     </div>
 
     <!-- MODAL -->
-    <div id="perfumeModal" class="modal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
+    <div id="perfumeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalName" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close-modal" role="button" tabindex="0" aria-label="Cerrar ventana">&times;</span>
             <img id="modalImage" class="modal-image" src="" alt="">
             <div class="modal-info">
                 <div id="modalCategory" class="perfume-category"></div>
@@ -881,97 +913,13 @@
                 <p id="modalDescription" class="perfume-description"></p>
                 <div id="modalNotes" class="perfume-notes"></div>
                 <div id="modalPrice" class="perfume-price"></div>
-                <button id="modalWhatsAppBtn" class="perfume-cta" style="margin-top: 20px;">💬 ¡Me interesa!</button>
+                <button id="modalWhatsAppBtn" class="perfume-cta modal-cta">💬 ¡Me interesa!</button>
             </div>
         </div>
     </div>
-
-    <script>
-        function openModal(cardEl) {
-            const modal = document.getElementById('perfumeModal');
-            if (!modal || !cardEl) return;
-
-            const modalImage = modal.querySelector('#modalImage');
-            const sourceImg = cardEl.querySelector('.perfume-image img');
-            if (sourceImg) {
-                modalImage.src = sourceImg.src;
-                modalImage.alt = sourceImg.alt || '';
-            }
-
-            modal.querySelector('#modalName').textContent = cardEl.querySelector('.perfume-name')?.textContent || 'Perfume';
-            modal.querySelector('#modalCategory').textContent = cardEl.querySelector('.perfume-category')?.textContent || '';
-            modal.querySelector('#modalDescription').textContent = cardEl.querySelector('.perfume-description')?.textContent || '';
-            modal.querySelector('#modalNotes').innerHTML = cardEl.querySelector('.perfume-notes')?.innerHTML || '';
-            modal.querySelector('#modalPrice').textContent = cardEl.querySelector('.perfume-price')?.textContent || '';
-
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-
-            const waNumber = '5645003181';
-            const whatsappBtn = modal.querySelector('#modalWhatsAppBtn');
-            if (whatsappBtn) {
-                whatsappBtn.onclick = function (e) {
-                    e.preventDefault();
-                    const name = modal.querySelector('#modalName')?.textContent.trim() || '';
-                    const message = `Hola, me interesa el perfume: ${name} 💐`;
-                    const encoded = encodeURIComponent(message);
-                    const waWeb = 'https://wa.me/' + waNumber + '?text=' + encoded;
-                    const waApp = 'whatsapp://send?text=' + encoded;
-
-                    closeModal();
-
-                    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                    if (isMobile) {
-                        window.location.href = waApp;
-                        setTimeout(function() {
-                            window.open(waWeb, '_blank', 'noopener');
-                        }, 600);
-                    } else {
-                        window.open(waWeb, '_blank', 'noopener');
-                    }
-
-                    whatsappBtn.disabled = true;
-                    setTimeout(() => { whatsappBtn.disabled = false; }, 2000);
-                };
-            }
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('perfumeModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') closeModal();
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const userInputs = document.querySelectorAll('input, textarea');
-            userInputs.forEach(input => {
-                input.addEventListener('input', function() {
-                    this.value = this.value.replace(/<script[^>]*>.*?<\/script>/gi, '');
-                });
-            });
-        });
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.perfume-card').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+    <script src="assets/galeria.js"></script>
 </body>
 </html>
+
+
+

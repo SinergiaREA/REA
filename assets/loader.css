@@ -588,6 +588,25 @@
     to { left: 120%; }
 }
 
+/* Animación para emojis del loader-status */
+.status-emoji {
+    display: inline-block;
+    margin: 0 3px;
+    animation: emojiPulse 1.2s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes emojiPulse {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3) translateY(-4px);
+        opacity: 0.8;
+    }
+}
+
 /* ========== SISTEMA DE PARTÍCULAS ========== */
 .loader-particles { 
     position: absolute; 

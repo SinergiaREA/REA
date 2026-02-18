@@ -11,7 +11,7 @@
     <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; img-src 'self' data: blob: https:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';">
     <meta name="format-detection" content="telephone=no">
     
     <!-- SEO & Description -->
@@ -97,12 +97,13 @@
                         <span></span><span></span><span></span>
                     </div>
                 </div><br>
-              
-                <span class="loader-text-animate">✨24 de febrero</span><br>
-                <span class="loader-text-animate">Día de la Bandera de México🎖️</span>
+
             </div>
-            <p class="loader-subtext">🎖️ Honrando nuestros colores y nuestra identidad ✨</p>
-            <p class="loader-status">Cargando inspiración mexicana para ti...</p>
+            <p class="loader-status">Conectando contigo
+            <span class="status-emoji" style="animation-delay: 0.2s;">🔸</span>
+            <span class="status-emoji" style="animation-delay: 0.4s;">🔸</span>
+            <span class="status-emoji" style="animation-delay: 0.6s;">🔸</span>
+            </p>
         </div>
     </div>
 
@@ -149,7 +150,11 @@
             <!-- HERO SECTION CON COUNTDOWN -->
             <div class="hero-section">
                 <div class="countdown-container">
-                    <h2 class="countdown-title">🎖️ Día de la Bandera de México 🦅</h2>
+                    <h2 class="countdown-title">
+                        <span class="title-badge">24 FEB</span>
+                        <span class="title-main">Día de la Bandera de México</span>
+                        <span class="title-seal" aria-hidden="true">🎖️</span>
+                    </h2>
                     <div class="countdown-timer" id="countdown">
                         <div class="countdown-item">
                             <span class="countdown-number" id="days">0</span>
@@ -169,7 +174,7 @@
                         </div>
                     </div>
                     <p class="hero-subtitle">
-                        🎖️ Celebramos el simbolo de nuestra identidad nacional 🦅
+                        Celebramos el símbolo de nuestra identidad nacional con orgullo y tradición.
                     </p>
                     
                     <div class="hero-cta">
@@ -518,7 +523,7 @@
                 </div>
                 <div class="footer-bottom">
                     <p>🎖️ Orgullosamente Mexicanos 🦅</p>
-                    <p style="font-size: 0.9em; margin-top: 8px;">© 2026 Sinergia REA - ¡Click solucionado! 💡</p>
+                    <p class="footer-copy">© 2026 Sinergia REA - ¡Click solucionado! 💡</p>
                 </div>
             </div>
         </div>
@@ -528,5 +533,3 @@
     <script src="assets/index.js"></script>
 </body>
 </html>
-
-

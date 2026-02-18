@@ -4,8 +4,7 @@
 
     // Configuración centralizada
     const config = {
-        // Se omite 🇲🇽 porque en algunos equipos se muestra como texto "MX".
-        emojis: ['🪅', '🎺', '🌵', '🎉', '🎗️', '🤍', '❤️', '💚', '🌶️', '🦅', '🎖️'],
+        emojis: ['❤️', '🤍', '💚', '🪅', '🌶️', '🌮'],
         starEmojis: ['⭐', '✨', '🌟'],
         colors: ['#006847', '#ffffff', '#CE1126'],
         heartCount: 16,
@@ -166,6 +165,22 @@
         }, config.loaderDuration);
     }
 
+    function redirectFromLoaderPage() {
+        const pathname = window.location.pathname || '';
+        const isLoaderPage = pathname === '/' || pathname.endsWith('/loader.html');
+        if (!isLoaderPage) return;
+
+        const redirectDelay = config.loaderDuration + 1500;
+        setTimeout(() => {
+            try {
+                sessionStorage.setItem('loaderShown', 'true');
+            } catch (e) {
+                // Ignore storage failures in restricted contexts.
+            }
+            window.location.href = 'index.html';
+        }, redirectDelay);
+    }
+
     // ========== INICIALIZACIÓN ==========
     function init() {
         if (!elements.loader || !elements.heartsContainer || !elements.particlesContainer) {
@@ -187,6 +202,7 @@
         createStars();
         createGlitter();
         hideLoader();
+        redirectFromLoaderPage();
     }
 
     // Inicializar cuando DOM esté listo
