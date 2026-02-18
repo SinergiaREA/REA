@@ -32,10 +32,15 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/loader.html"
-    }
-  ]
+ "rewrites": [
+  {
+    "source": "/",
+    "destination": "/loader.html"
+  },
+  {
+    "source": "/index",
+    "destination": "/index.html"
+  }
+]
+
 }
