@@ -1,4 +1,4 @@
-﻿// ========== LOADER OPTIMIZADO - DÍA DE LA BANDERA ==========
+// ========== LOADER OPTIMIZADO - DÍA DE LA BANDERA ==========
 (function() {
     'use strict';
 
@@ -21,6 +21,27 @@
         heartsContainer: document.getElementById('heartsContainer'),
         particlesContainer: document.getElementById('particlesContainer')
     };
+
+    // ========== VERIFICAR SI YA SE MOSTRÓ EL LOADER ==========
+    function loaderAlreadyShown() {
+        try {
+            // Usar múltiples métodos para verificar
+            if (sessionStorage.getItem('loaderShown') === 'true') return true;
+            if (localStorage.getItem('loaderShownToday') === 'true') return true;
+            if (window.__loaderShown === true) return true;
+        } catch(e) {
+            if (window.__loaderShown === true) return true;
+        }
+        return false;
+    }
+
+    function markLoaderShown() {
+        try {
+            sessionStorage.setItem('loaderShown', 'true');
+            localStorage.setItem('loaderShownToday', 'true');
+        } catch(e) {}
+        window.__loaderShown = true;
+    }
 
     // ========== TEMAS POR HORA DEL DÍA ==========
     function applyDayTheme() {
@@ -157,6 +178,7 @@
         setTimeout(() => {
             elements.loader.classList.add('hidden');
             loaderActive = false;
+            markLoaderShown();
 
             setTimeout(() => {
                 elements.heartsContainer.textContent = '';
@@ -165,38 +187,21 @@
         }, config.loaderDuration);
     }
 
-    function redirectFromLoaderPage() {
-        const pathname = window.location.pathname || '';
-        const isLoaderPage = pathname === '/' || pathname.endsWith('/loader.html');
-        if (!isLoaderPage) return;
-
-        const redirectDelay = config.loaderDuration + 1500;
-        setTimeout(() => {
-            try {
-                localStorage.setItem('loaderShown', 'true');
-                sessionStorage.setItem('loaderShown', 'true');
-            } catch (e) {
-                // Ignore storage failures in restricted contexts.
-            }
-            // Usar ruta absoluta para asegurar que no vuelva a /
-            window.location.href = '/index.html';
-        }, redirectDelay);
-    }
-
     // ========== INICIALIZACIÓN ==========
     function init() {
-        // Verificar si el loader ya fue mostrado
-        const loaderAlreadyShown = localStorage.getItem('loaderShown') === 'true' || 
-                                   sessionStorage.getItem('loaderShown') === 'true';
-        
-        if (loaderAlreadyShown && window.location.pathname.includes('loader')) {
-            // Si ya se mostró, saltar directamente a index.html
-            window.location.href = '/index.html';
+        if (!elements.loader || !elements.heartsContainer || !elements.particlesContainer) {
             return;
         }
 
-        if (!elements.loader || !elements.heartsContainer || !elements.particlesContainer) {
-            console.error('Loader: Required elements not found');
+        // Si el loader ya se mostró en esta sesión, ocultarlo completamente
+        if (loaderAlreadyShown()) {
+            elements.loader.classList.add('hidden');
+            loaderActive = false;
+            // Limpiar contenedores
+            setTimeout(() => {
+                elements.heartsContainer.textContent = '';
+                elements.particlesContainer.textContent = '';
+            }, 100);
             return;
         }
 
@@ -214,7 +219,6 @@
         createStars();
         createGlitter();
         hideLoader();
-        redirectFromLoaderPage();
     }
 
     // Inicializar cuando DOM esté listo
@@ -224,4 +228,3 @@
         init();
     }
 })();
-
