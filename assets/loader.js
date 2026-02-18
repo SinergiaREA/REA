@@ -177,7 +177,7 @@
             } catch (e) {
                 // Ignore storage failures in restricted contexts.
             }
-            window.location.href = 'index.html';
+           window.location.href = '/index.html';
         }, redirectDelay);
     }
 
@@ -212,4 +212,5 @@
         init();
     }
 })();
+
 
