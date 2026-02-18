@@ -173,16 +173,28 @@
         const redirectDelay = config.loaderDuration + 1500;
         setTimeout(() => {
             try {
+                localStorage.setItem('loaderShown', 'true');
                 sessionStorage.setItem('loaderShown', 'true');
             } catch (e) {
                 // Ignore storage failures in restricted contexts.
             }
-           window.location.href = '/index.html';
+            // Usar ruta absoluta para asegurar que no vuelva a /
+            window.location.href = '/index.html';
         }, redirectDelay);
     }
 
     // ========== INICIALIZACIÓN ==========
     function init() {
+        // Verificar si el loader ya fue mostrado
+        const loaderAlreadyShown = localStorage.getItem('loaderShown') === 'true' || 
+                                   sessionStorage.getItem('loaderShown') === 'true';
+        
+        if (loaderAlreadyShown && window.location.pathname.includes('loader')) {
+            // Si ya se mostró, saltar directamente a index.html
+            window.location.href = '/index.html';
+            return;
+        }
+
         if (!elements.loader || !elements.heartsContainer || !elements.particlesContainer) {
             console.error('Loader: Required elements not found');
             return;
@@ -212,5 +224,4 @@
         init();
     }
 })();
-
 
