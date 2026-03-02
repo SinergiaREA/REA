@@ -1,16 +1,17 @@
-// ========== LOADER OPTIMIZADO - DÍA DE LA BANDERA ==========
+// ========== LOADER OPTIMIZADO - MARZO: BENITO JUÁREZ & PRIMAVERA ==========
 (function() {
     'use strict';
 
-    // Configuración centralizada
+    // Configuración centralizada para Marzo
     const config = {
-        emojis: ['❤️', '🤍', '💚', '🪅', '🌶️', '🌮'],
+        // Elección aleatoria entre flores y mariposas
+        emojis: ['🌸', '🌼', '🌻', '🦋', '🌺', '🌷'],
         starEmojis: ['⭐', '✨', '🌟'],
-        colors: ['#006847', '#ffffff', '#CE1126'],
-        heartCount: 16,
+        colors: ['#ffd700', '#4caf50', '#e8f5e9', '#ff69b4', '#ffb300'],
+        elementCount: 20,
         particleCount: 24,
         starCount: 9,
-        glitterCount: 8,
+        glitterCount: 10,
         loaderDuration: 6500
     };
     let loaderActive = true;
@@ -18,7 +19,8 @@
     // Elementos del DOM
     const elements = {
         loader: document.getElementById('valentineLoader'),
-        heartsContainer: document.getElementById('heartsContainer'),
+        elementsContainer: document.getElementById('elementsContainer'),
+        heartsContainer: document.getElementById('heartsContainer'), // Para compatibilidad
         particlesContainer: document.getElementById('particlesContainer')
     };
 
@@ -39,7 +41,7 @@
         } catch(e) {}
     }
 
-    // ========== TEMAS POR HORA DEL DÍA ==========
+    // ========== TEMAS POR HORA DEL DÍA - MARZO ==========
     function applyDayTheme() {
         const now = new Date();
         const mexicoTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Mexico_City"}));
@@ -85,27 +87,37 @@
         return element;
     }
 
-    // ========== CORAZONES FLOTANTES ==========
-    function createFloatingHearts() {
+    // ========== ELEMENTOS FLOTANTES DE MARZO (FLORES Y MARIPOSAS) ==========
+    function createFloatingElements() {
         if (!loaderActive) return;
 
         const fragment = document.createDocumentFragment();
+        const containerRef = elements.elementsContainer || elements.heartsContainer;
         
-        for (let i = 0; i < config.heartCount; i++) {
+        for (let i = 0; i < config.elementCount; i++) {
             const emoji = config.emojis[Math.floor(Math.random() * config.emojis.length)];
-            const heart = createAnimatedElement('floating-heart', {
+            const isButterly = emoji === '🦋';
+            const elementType = isButterly ? 'floating-butterfly' : 'floating-flower';
+            
+            const element = createAnimatedElement(elementType, {
                 content: emoji,
-                maxDelay: 2.2
+                maxDelay: 2.5,
+                fontSize: isButterly ? `${16 + Math.random() * 12}px` : `${14 + Math.random() * 14}px`
             });
-            fragment.appendChild(heart);
+            fragment.appendChild(element);
         }
         
-        elements.heartsContainer.appendChild(fragment);
+        if (containerRef) containerRef.appendChild(fragment);
         
-        // Recrear hearts continuamente
+        // Recrear elementos continuamente
         setTimeout(() => {
-            if (loaderActive) createFloatingHearts();
-        }, 1200 + Math.random() * 800);
+            if (loaderActive) createFloatingElements();
+        }, 1500 + Math.random() * 1000);
+    }
+
+    // Compatibilidad con versiones anteriores
+    function createFloatingHearts() {
+        createFloatingElements();
     }
 
     // ========== PARTÍCULAS ==========
@@ -177,7 +189,8 @@
             markLoaderShown();
 
             setTimeout(() => {
-                elements.heartsContainer.textContent = '';
+                if (elements.elementsContainer) elements.elementsContainer.textContent = '';
+                if (elements.heartsContainer) elements.heartsContainer.textContent = '';
                 elements.particlesContainer.textContent = '';
             }, 700);
         }, config.loaderDuration);
@@ -185,7 +198,12 @@
 
     // ========== INICIALIZACIÓN ==========
     function init() {
-        if (!elements.loader || !elements.heartsContainer || !elements.particlesContainer) {
+        // Compatibilidad: usar elementsContainer si existe, sino heartsContainer
+        if (!elements.elementsContainer && elements.heartsContainer) {
+            elements.elementsContainer = elements.heartsContainer;
+        }
+        
+        if (!elements.loader || !elements.particlesContainer) {
             return;
         }
 
@@ -197,7 +215,7 @@
         }
 
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            config.heartCount = 6;
+            config.elementCount = 8;
             config.particleCount = 10;
             config.starCount = 4;
             config.glitterCount = 4;
@@ -205,7 +223,7 @@
         }
 
         applyDayTheme();
-        createFloatingHearts();
+        createFloatingElements();
         createParticles();
         createStars();
         createGlitter();
