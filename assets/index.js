@@ -2,6 +2,32 @@
 const DEBUG = false;
 const debugLog = (...args) => { if (DEBUG) console.log(...args); };
 const debugError = (...args) => { if (DEBUG) console.error(...args); };
+const campaign = window.REA_CAMPAIGN || {};
+
+function applyCampaignContent() {
+    const subtitleElement = document.getElementById('dynamicSubtitle');
+    const dateBadge = document.getElementById('campaignDateBadge');
+    const titleMain = document.getElementById('campaignTitleMain');
+    const offerBadge = document.getElementById('campaignOfferBadge');
+    const offerTitle = document.getElementById('campaignOfferTitle');
+
+    if (subtitleElement && campaign.welcomeSubtitle) subtitleElement.textContent = campaign.welcomeSubtitle;
+    if (dateBadge && campaign.shortDateLabel) dateBadge.textContent = campaign.shortDateLabel;
+    if (titleMain && campaign.eventTitleDisplay) titleMain.textContent = campaign.eventTitleDisplay;
+    if (offerBadge && campaign.celebrationBadge) offerBadge.textContent = campaign.celebrationBadge;
+    if (offerTitle && campaign.celebrationTitle) offerTitle.textContent = campaign.celebrationTitle;
+
+    if (campaign.indexMetaDescription) {
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) metaDescription.setAttribute('content', campaign.indexMetaDescription);
+    }
+    if (campaign.indexMetaTitle) {
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', campaign.indexMetaTitle);
+        if (twitterTitle) twitterTitle.setAttribute('content', campaign.indexMetaTitle);
+    }
+}
 
 function updateGreeting() {
     // Obtener hora de México (GMT-6)
@@ -13,37 +39,56 @@ function updateGreeting() {
     const subtitleElement = document.getElementById('dynamicSubtitle');
     const headerElement = document.querySelector('.header');
     const heroElement = document.querySelector('.hero-section');
+    const escudoIcon = document.querySelector('.escudo-icon-eagle');
+    const escudoRing = document.querySelector('.escudo-ring');
 
     let greeting = '';
     let emoji = '';
     let subtitle = '';
     let themeClass = '';
+    let sunState = '';
 
-    // 6 AM - 12 PM: Buenos días
+    // 6 AM - 12 PM: Sol naciente
     if (hour >= 6 && hour < 12) {
         greeting = '¡Buenos días!';
         emoji = '🌅';
-        subtitle = '💫 ¡Excelente inicio de día! Que tengas un día productivo 🎉';
+        subtitle = campaign.welcomeSubtitle || 'Excelente inicio de dia';
         themeClass = 'morning-theme';
+        sunState = 'sunrise-sun';
+        if (escudoIcon) escudoIcon.textContent = '🌅';
     }
-    // 12 PM - 6 PM: Buenas tardes
-    else if (hour >= 12 && hour < 18) {
+    // 12 PM - 3 PM: Sol radiante
+    else if (hour >= 12 && hour < 15) {
         greeting = '¡Buenas tardes!';
         emoji = '☀️';
-        subtitle = '🌟 ¡Esperamos que tu tarde sea maravillosa! ✨';
+        subtitle = campaign.welcomeSubtitle || 'Excelente tarde';
         themeClass = 'afternoon-theme';
+        sunState = 'midday-sun';
+        if (escudoIcon) escudoIcon.textContent = '☀️';
     }
-    // 6 PM - 6 AM: Buenas noches
+    // 3 PM - 6 PM: Sol atardecer
+    else if (hour >= 15 && hour < 18) {
+        greeting = '¡Buenas tardes!';
+        emoji = '🌅';
+        subtitle = campaign.welcomeSubtitle || 'Excelente tarde';
+        themeClass = 'afternoon-theme';
+        sunState = 'sunset-sun';
+        if (escudoIcon) escudoIcon.textContent = '🌅';
+    }
+    // 6 PM - 6 AM: Luna noche
     else {
         greeting = '¡Buenas noches!';
         emoji = '🌙';
-        subtitle = '⭐ ¡Que tengas una noche tranquila y agradable! 💫';
+        subtitle = campaign.welcomeSubtitle || 'Excelente noche';
         themeClass = 'night-theme';
+        sunState = 'night-moon';
+        if (escudoIcon) escudoIcon.textContent = '🌙';
     }
 
     debugLog('🕐 Hora actual de México:', hour + ':00');
     debugLog('👋 Saludo:', greeting);
     debugLog('🎨 Tema aplicado:', themeClass);
+    debugLog('☀️ Estado del sol/luna:', sunState);
 
     if (greetingElement) {
         greetingElement.textContent = `${emoji} ${greeting} ${emoji}`;
@@ -58,6 +103,10 @@ function updateGreeting() {
     if (heroElement) {
         heroElement.classList.remove('morning-theme', 'afternoon-theme', 'night-theme');
         heroElement.classList.add(themeClass);
+    }
+    if (escudoRing) {
+        escudoRing.classList.remove('sunrise-sun', 'midday-sun', 'sunset-sun', 'night-moon');
+        escudoRing.classList.add(sunState);
     }
 
     createTimeSpheres(hour);
@@ -113,7 +162,8 @@ setInterval(updateGreeting, 60000);
 
 // ========== COUNTDOWN TIMER ==========
 function updateCountdown() {
-    const flagDay = new Date('2026-02-24T00:00:00').getTime();
+    const eventDate = campaign.eventDateISO || '2026-03-21T00:00:00-06:00';
+    const flagDay = new Date(eventDate).getTime();
     const now = new Date().getTime();
     const distance = flagDay - now;
 
@@ -140,7 +190,7 @@ function updateCountdown() {
     } else if (countdownEl.dataset.celebrated !== 'true') {
         countdownEl.replaceChildren();
         const title = document.createElement('h3');
-        title.textContent = '🇲🇽 ¡Día de la Bandera! 🇲🇽';
+        title.textContent = campaign.countdownEndedTitle || 'Benito Juarez y Primavera';
         countdownEl.appendChild(title);
         countdownEl.dataset.celebrated = 'true';
     }
@@ -148,6 +198,7 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+applyCampaignContent();
 
 // ========== SCROLL PROGRESS BAR + SCROLL TO TOP ==========
 const progressBar = document.getElementById('progressBar');

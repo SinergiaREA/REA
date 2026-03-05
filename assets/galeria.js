@@ -1,7 +1,23 @@
-(() => {
+﻿(() => {
     'use strict';
 
+    const campaign = window.REA_CAMPAIGN || {};
     let lastFocusedElement = null;
+
+    function applyCampaignContent() {
+        const galleryTitle = document.getElementById('campaignGalleryHeaderTitle');
+        const gallerySubtitle = document.getElementById('campaignGalleryHeaderSubtitle');
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+
+        if (campaign.galleryTitle) document.title = campaign.galleryTitle;
+        if (galleryTitle && campaign.galleryHeaderTitle) galleryTitle.textContent = campaign.galleryHeaderTitle;
+        if (gallerySubtitle && campaign.galleryHeaderSubtitle) gallerySubtitle.textContent = campaign.galleryHeaderSubtitle;
+        if (metaDescription && campaign.galleryMetaDescription) metaDescription.setAttribute('content', campaign.galleryMetaDescription);
+        if (ogTitle && campaign.galleryOgTitle) ogTitle.setAttribute('content', campaign.galleryOgTitle);
+        if (ogDescription && campaign.galleryOgDescription) ogDescription.setAttribute('content', campaign.galleryOgDescription);
+    }
 
     function openModal(cardEl) {
         const modal = document.getElementById('perfumeModal');
@@ -60,7 +76,7 @@
         whatsappBtn.addEventListener('click', (e) => {
             e.preventDefault();
             const name = modal.querySelector('#modalName')?.textContent.trim() || '';
-            const message = `Hola, me interesa el perfume: ${name} 💐`;
+            const message = `Hola, me interesa el perfume: ${name}`;
             const encoded = encodeURIComponent(message);
             const waWeb = `https://wa.me/${waNumber}?text=${encoded}`;
             const waApp = `whatsapp://send?text=${encoded}`;
@@ -163,6 +179,7 @@
     }
 
     function init() {
+        applyCampaignContent();
         setupCards();
         setupModalDismiss();
         setupWhatsAppButton();

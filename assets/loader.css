@@ -1,4 +1,4 @@
-/* ========== LOADER OPTIMIZADO - DÍA DE LA BANDERA (24 DE FEBRERO) ========== */
+/* ========== LOADER OPTIMIZADO - CAMPAÑA DE MARZO (BENITO JUAREZ Y PRIMAVERA) ========== */
 
 * {
     margin: 0;
@@ -103,9 +103,9 @@
     background: conic-gradient(
         from 0deg,
         rgba(255,255,255,0.06) 0deg,
-        rgba(255,255,255,0.92) 70deg,
-        rgba(0,104,71,0.75) 160deg,
-        rgba(206,17,38,0.75) 260deg,
+        rgba(255,183,77,0.92) 70deg,
+        rgba(233,30,140,0.75) 160deg,
+        rgba(76,175,80,0.75) 260deg,
         rgba(255,255,255,0.1) 360deg
     );
     -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 7px));
@@ -141,7 +141,37 @@
     50% { opacity: 1; transform: scale(1.025); }
 }
 
-/* ========== BANDERA DE MÉXICO MEJORADA ========== */
+/* ========== FLOR PRIMAVERAL MARZO (reemplaza bandera) ========== */
+.spring-icon {
+    width: 80px;
+    height: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    filter: drop-shadow(0 0 14px rgba(233,30,140,0.5)) drop-shadow(0 0 28px rgba(255,213,79,0.3));
+    animation: flowerSpin 8s linear infinite;
+    will-change: transform;
+}
+
+.spring-flower-svg {
+    width: 80px;
+    height: 80px;
+    animation: flowerBreath 2.2s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes flowerSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes flowerBreath {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+/* ========== BANDERA DE MÉXICO MEJORADA (legacy - no usada) ========== */
 .heart-center {
     position: absolute; 
     top: 50%; 
@@ -587,7 +617,7 @@
     }
 }
 
-/* Emoji especial del 24 de febrero */
+/* Emoji especial de campaña de marzo */
 .loader-emoji-special {
     font-size: 42px;
     display: inline-block;
@@ -763,7 +793,6 @@
     .mexico-flag .escudo-eagle,
     .mexico-flag .wing-left,
     .mexico-flag .wing-right,
-    .mexico-flag .escudo-snake,
     .floating-heart,
     .particle,
     .star,
@@ -789,14 +818,14 @@
         height: 110px;
     }
 
-    .mexico-flag {
-        width: 70px;
-        height: 48px;
+    .tech-hex {
+        width: 72px;
+        height: 72px;
     }
 
-    .mexico-flag svg {
-        width: 38px;
-        height: 38px;
+    .tech-hex svg {
+        width: 100%;
+        height: 100%;
     }
 
     .loader-brand {
@@ -838,14 +867,14 @@
         height: 100px;
     }
 
-    .mexico-flag {
-        width: 60px;
-        height: 42px;
+    .tech-hex {
+        width: 64px;
+        height: 64px;
     }
 
-    .mexico-flag svg {
-        width: 34px;
-        height: 34px;
+    .tech-hex svg {
+        width: 100%;
+        height: 100%;
     }
 
     .loader-brand {
