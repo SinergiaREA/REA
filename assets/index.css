@@ -1869,67 +1869,213 @@ body {
 }
 
 .countdown-title {
-    animation: none;
-    line-height: 1.2;
-}
-
-.countdown-title {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
-    padding: 14px 18px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+    gap: 14px;
+    max-width: 980px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 24px;
+    border-radius: 38px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 248, 251, 0.9));
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    box-shadow: 0 14px 34px rgba(11, 25, 41, 0.16);
     color: var(--text-dark);
+    line-height: 1.2;
     text-shadow: none;
+    animation: heroTitleReveal 0.75s ease-out both;
+    position: relative;
+    overflow: hidden;
     -webkit-background-clip: border-box;
     background-clip: border-box;
     -webkit-text-fill-color: initial;
 }
 
+.countdown-title::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(108deg, transparent 18%, rgba(255, 255, 255, 0.52) 48%, transparent 76%);
+    transform: translateX(-120%);
+    animation: titleShine 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
 .countdown-title .title-badge {
-    font-size: 0.46em;
+    font-size: 0.44em;
     font-weight: 900;
-    letter-spacing: 1.3px;
+    letter-spacing: 1.4px;
     text-transform: uppercase;
     color: #ffffff;
     background: linear-gradient(135deg, #006847, #00a86b);
     border-radius: 999px;
-    padding: 8px 14px;
-    box-shadow: 0 6px 18px rgba(0, 104, 71, 0.35);
+    padding: 9px 16px;
+    box-shadow: 0 7px 20px rgba(0, 104, 71, 0.38);
+    animation: badgePulse 2.8s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
 }
 
 .countdown-title .title-main {
-    display: inline-block;
-    line-height: 1.1;
+    display: block;
+    flex: 1 1 100%;
+    line-height: 1.08;
+    text-align: center;
     color: #1d1d1d;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.35);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.32);
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    position: relative;
+    z-index: 1;
 }
 
 .countdown-title .title-seal {
-    font-size: 0.64em;
-    background: rgba(255, 183, 0, 0.2);
-    border: 1px solid rgba(255, 183, 0, 0.5);
+    font-size: 0.42em;
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    color: #8a5300;
+    background: linear-gradient(135deg, rgba(255, 217, 102, 0.6), rgba(255, 243, 204, 0.96));
+    border: 1px solid rgba(255, 183, 0, 0.58);
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 16px rgba(255, 183, 0, 0.28);
+    box-shadow: 0 8px 20px rgba(255, 183, 0, 0.3);
+    animation: sealFloat 3.5s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-subtitle {
-    max-width: 840px;
+    max-width: 900px;
+    margin: 26px auto 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(246, 249, 253, 0.88));
+    border: 1px solid rgba(5, 24, 44, 0.08);
+    border-radius: var(--radius-md);
+    box-shadow: 0 16px 34px rgba(12, 30, 51, 0.14);
+    padding: 22px 24px;
+    display: grid;
+    gap: 14px;
+    animation: heroSubtitleIn 0.85s ease-out both;
+    animation-delay: 0.1s;
+}
+
+.hero-subtitle-title {
+    margin: 0;
+    font-size: clamp(1.1rem, 2.3vw, 1.5rem);
+    font-weight: 900;
+    line-height: 1.25;
+    color: #0c2a40;
+}
+
+.hero-subtitle-text {
+    margin: 0;
+    font-size: clamp(1rem, 1.6vw, 1.16rem);
+    line-height: 1.65;
+    color: #2a3c4d;
+}
+
+.hero-subtitle-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #18474f;
+    background: linear-gradient(135deg, rgba(190, 240, 225, 0.84), rgba(253, 249, 210, 0.92));
+    border: 1px solid rgba(0, 104, 71, 0.24);
+    box-shadow: 0 6px 16px rgba(0, 64, 42, 0.12);
+    animation: heroTagIn 0.55s ease both;
+}
+
+.hero-tag:nth-child(1) {
+    animation-delay: 0.18s;
+}
+
+.hero-tag:nth-child(2) {
+    animation-delay: 0.26s;
+}
+
+.hero-tag:nth-child(3) {
+    animation-delay: 0.34s;
+}
+
+.special-offer {
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    animation: offerLiftIn 0.8s ease-out backwards;
+}
+
+.offer-badge {
+    letter-spacing: 0.6px;
+    animation: badgePulse 3.2s ease-in-out infinite;
+}
+
+.special-offer h2 {
+    line-height: 1.12;
+}
+
+.offer-lead {
+    font-size: 1.24em;
+    font-weight: 800;
+}
+
+.offer-copy {
+    max-width: 920px;
     margin-left: auto;
     margin-right: auto;
-    background: rgba(255, 255, 255, 0.78);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: var(--radius-md);
+}
+
+.feature-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.24s ease, box-shadow 0.24s ease;
+    animation: featureRise 0.5s ease both;
+}
+
+.feature-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.feature-item:nth-child(1) {
+    animation-delay: 0.16s;
+}
+
+.feature-item:nth-child(2) {
+    animation-delay: 0.24s;
+}
+
+.feature-item:nth-child(3) {
+    animation-delay: 0.32s;
+}
+
+.feature-icon {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(9, 89, 51, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 900;
+    line-height: 1;
 }
 
 .btn-primary,
@@ -2039,6 +2185,95 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.24);
 }
 
+@keyframes heroTitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes titleShine {
+    0% {
+        transform: translateX(-120%);
+    }
+    18% {
+        transform: translateX(115%);
+    }
+    100% {
+        transform: translateX(115%);
+    }
+}
+
+@keyframes badgePulse {
+    0%,
+    100% {
+        box-shadow: 0 7px 20px rgba(0, 104, 71, 0.32);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 10px 24px rgba(0, 104, 71, 0.44);
+        transform: scale(1.03);
+    }
+}
+
+@keyframes sealFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes heroSubtitleIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroTagIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes offerLiftIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes featureRise {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media (max-width: 768px) {
     body {
         background-attachment: scroll;
@@ -2050,11 +2285,8 @@ body {
 
     .countdown-title {
         font-size: 1.6em;
-    }
-
-    .countdown-title {
         border-radius: 22px;
-        padding: 10px 12px;
+        padding: 14px 12px;
         gap: 8px;
     }
 
@@ -2063,16 +2295,46 @@ body {
         padding: 6px 10px;
     }
 
+    .countdown-title .title-main {
+        font-size: clamp(1.8rem, 8vw, 2.35rem);
+    }
+
     .countdown-title .title-seal {
-        width: 40px;
-        height: 40px;
-        font-size: 0.56em;
+        width: 44px;
+        height: 44px;
+        font-size: 0.48em;
     }
 
     .hero-subtitle {
-        font-size: 1.05em;
-        line-height: 1.55;
-        padding: 12px 16px;
+        padding: 16px 14px;
+        gap: 10px;
+    }
+
+    .hero-subtitle-title {
+        font-size: 1.16rem;
+    }
+
+    .hero-subtitle-text {
+        font-size: 0.98rem;
+        line-height: 1.56;
+    }
+
+    .hero-subtitle-tags {
+        gap: 8px;
+    }
+
+    .hero-tag {
+        width: 100%;
+        font-size: 0.88rem;
+        padding: 8px 12px;
+    }
+
+    .offer-lead {
+        font-size: 1.1em;
+    }
+
+    .offer-copy {
+        font-size: 1.02em;
     }
 
     .countdown-item:hover,
