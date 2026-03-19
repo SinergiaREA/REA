@@ -1,492 +1,835 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Security Meta Tags -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';">
-    <meta name="format-detection" content="telephone=no">
-    
-    <!-- SEO & Description -->
-    <meta name="description" content="Sinergia REA - Servicios de papelería, impresiones, educación, trámites fiscales y tecnología. ¡Tu solución en un solo lugar! Celebramos el 21 de marzo, Natalicio de Benito Juárez & Equinoccio de Primavera.">
-    <meta name="keywords" content="papelería, impresiones, SAT, IMSS, Infonavit, material educativo, formateo PC, perfumes L'BEL, Veracruz">
-    <meta name="author" content="Sinergia REA">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Sinergia REA - Tu Solución Integral | 21 de marzo, Benito Juárez & Primavera">
-    <meta property="og:description" content="Papelería, impresiones, perfumes L'BEL y más. ¡Encuentra el regalo perfecto!">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="es_MX">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sinergia REA - 21 de marzo, Benito Juárez & Primavera">
-    
-    <title>Sinergia REA | Papelería y Servicios</title>
-    
-    <!-- Preconnect para Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/loader.css">
-    <link rel="stylesheet" href="assets/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy"
+    content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="description"
+    content="Sinergia REA — Papeleria, impresiones a color, tramites SAT IMSS Infonavit, servicios tecnologicos y material educativo. Tu solucion integral en Veracruz, Mexico." />
+  <meta name="keywords"
+    content="papeleria San Andres Tuxtla, impresiones color, SAT, IMSS, Infonavit, material educativo, formateo PC, perfumes L BEL, Sinergia REA" />
+  <meta name="author" content="Sinergia REA" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Sinergia REA — Tu Solucion Integral · Veracruz" />
+  <meta property="og:description"
+    content="Papeleria, impresiones, tramites fiscales, tecnologia y mas. Tu solucion en un solo lugar!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_MX" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sinergia REA — Tu Solucion Integral · Veracruz" />
+  <title>Sinergia REA | Papeleria y Servicios Contables e Informaticos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;600;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/loader.css" />
+  <link rel="stylesheet" href="assets/light.css" />
 </head>
+
 <body>
-
-    <!-- Loader optimizado para Marzo: Benito Juárez & Primavera -->
-    <div class="valentine-loader" id="valentineLoader">
-        <div class="loader-particles" id="particlesContainer"></div>
-        <div class="floating-hearts" id="heartsContainer"></div>
-        <div class="loader-content">
-            <div class="heart-spinner">
-                <div class="heart-center">
-                    <div class="spring-icon" role="img" aria-label="Flor de primavera - Marzo">
-                        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="spring-flower-svg">
-                          <defs>
-                            <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-                              <stop offset="0%" stop-color="#fff9e6"/>
-                              <stop offset="100%" stop-color="#FFD54F"/>
-                            </radialGradient>
-                            <radialGradient id="petalGrad" cx="50%" cy="20%" r="80%">
-                              <stop offset="0%" stop-color="#FFB3C6"/>
-                              <stop offset="100%" stop-color="#E91E8C"/>
-                            </radialGradient>
-                          </defs>
-                          <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#petalGrad)" opacity="0.93"/>
-                          <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#petalGrad)" opacity="0.93" transform="rotate(45 60 60)"/>
-                          <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#petalGrad)" opacity="0.93" transform="rotate(90 60 60)"/>
-                          <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#petalGrad)" opacity="0.93" transform="rotate(135 60 60)"/>
-                          <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#petalGrad)" opacity="0.93" transform="rotate(180 60 60)"/>
-                          <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#petalGrad)" opacity="0.93" transform="rotate(225 60 60)"/>
-                          <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#petalGrad)" opacity="0.93" transform="rotate(270 60 60)"/>
-                          <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#petalGrad)" opacity="0.93" transform="rotate(315 60 60)"/>
-                          <circle cx="60" cy="60" r="18" fill="url(#centerGlow)" stroke="#FFB300" stroke-width="2.2"/>
-                          <circle cx="60" cy="60" r="10" fill="#FFA000" opacity="0.65"/>
-                          <circle cx="56" cy="56" r="2.5" fill="#fff" opacity="0.55"/>
-                          <circle cx="63" cy="58" r="1.8" fill="#fff" opacity="0.38"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="loader-text">
-                <div class="sinergia-loader-logo" role="img" aria-label="Logo Sinergia REA">
-                    <div class="logo-wordmark">
-                        <span class="logo-script">Sinergia</span>
-                        <span class="logo-rea">
-                            <span class="logo-r">R</span><span class="logo-e">E</span><span class="logo-a">A</span>
-                        </span>
-                    </div>
-
-                    <div class="logo-tech" aria-hidden="true">
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span>
-                    </div>
-                </div><br>
-
-            </div>
-            <p class="loader-status">Conectando contigo
-            <span class="status-emoji" style="animation-delay: 0.2s;">🔸</span>
-            <span class="status-emoji" style="animation-delay: 0.4s;">🔸</span>
-            <span class="status-emoji" style="animation-delay: 0.6s;">🔸</span>
-            </p>
+  <!-- ══ LOADER ══ -->
+  <div class="valentine-loader" id="valentineLoader">
+    <div class="loader-particles" id="particlesContainer"></div>
+    <div class="floating-hearts" id="heartsContainer"></div>
+    <div class="loader-content">
+      <div class="heart-spinner">
+        <div class="heart-center">
+          <div class="spring-icon" role="img" aria-label="Flor primaveral">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="spring-flower-svg" aria-hidden="true">
+              <defs>
+                <radialGradient id="cg" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fff9e6" />
+                  <stop offset="100%" stop-color="#FFD54F" />
+                </radialGradient>
+                <radialGradient id="pg" cx="50%" cy="20%" r="80%">
+                  <stop offset="0%" stop-color="#00E5FF" />
+                  <stop offset="100%" stop-color="#0057FF" />
+                </radialGradient>
+              </defs>
+              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" />
+              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(45 60 60)" />
+              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(90 60 60)" />
+              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(135 60 60)" />
+              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(180 60 60)" />
+              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(225 60 60)" />
+              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(270 60 60)" />
+              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(315 60 60)" />
+              <circle cx="60" cy="60" r="18" fill="url(#cg)" stroke="#FFB300" stroke-width="2.2" />
+              <circle cx="60" cy="60" r="10" fill="#FFA000" opacity=".65" />
+              <circle cx="56" cy="56" r="2.5" fill="#fff" opacity=".55" />
+            </svg>
+          </div>
         </div>
+      </div>
+      <div class="loader-text">
+        <div class="sinergia-loader-logo" role="img" aria-label="Logo Sinergia REA">
+          <div class="logo-wordmark">
+            <span class="logo-script">Sinergia</span>
+            <span class="logo-rea"><span class="logo-r">R</span><span class="logo-e">E</span><span
+                class="logo-a">A</span></span>
+          </div>
+          <div class="logo-tech" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+      <p class="loader-status">
+        Conectando contigo
+        <span class="status-emoji" style="animation-delay: 0.2s">🔸</span>
+        <span class="status-emoji" style="animation-delay: 0.4s">🔸</span>
+        <span class="status-emoji" style="animation-delay: 0.6s">🔸</span>
+      </p>
     </div>
+  </div>
 
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
+  <div class="progress-bar" id="progressBar"></div>
+  <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios"
+    class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
+  <div class="scroll-top" id="scrollTop">↑</div>
 
-    <!-- WhatsApp Flotante -->
-    <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" 
-       class="whatsapp-float" 
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.832.748 5.484 2.048 7.776L0 32l8.384-2.176A15.938 15.938 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.336c-2.528 0-4.908-.688-6.952-1.888l-.496-.296-5.152 1.352 1.376-5.024-.328-.516A13.252 13.252 0 0 1 2.664 16C2.664 8.636 8.636 2.664 16 2.664S29.336 8.636 29.336 16 23.364 29.336 16 29.336zm7.292-9.952c-.4-.2-2.364-1.168-2.732-1.3-.368-.132-.636-.2-.904.2-.268.4-1.036 1.3-1.272 1.568-.236.268-.472.3-.872.1-.4-.2-1.688-.62-3.216-1.984-1.188-1.06-1.992-2.368-2.224-2.768-.232-.4-.024-.616.176-.816.18-.18.4-.472.6-.708.2-.236.268-.4.4-.668.132-.268.068-.5-.032-.7-.1-.2-.904-2.176-1.24-2.98-.328-.784-.66-.676-.904-.688-.232-.012-.5-.016-.768-.016s-.7.1-1.068.5c-.368.4-1.404 1.372-1.404 3.348s1.436 3.884 1.636 4.152c.2.268 2.82 4.304 6.832 6.036.956.412 1.704.66 2.288.844.96.304 1.836.26 2.528.156.772-.116 2.364-.968 2.696-1.9.332-.932.332-1.732.232-1.9-.1-.168-.368-.268-.768-.468z"/>
-        </svg>
-        <div class="whatsapp-tooltip">¡Contáctanos por WhatsApp!</div>
+  <!-- ══ NAV ══ -->
+  <nav>
+    <a href="#" class="nav-logo" aria-label="Sinergia REA">
+      <span class="n-sin">Sin</span><span class="n-ergia">ergia</span><span class="n-sep"></span><span
+        class="n-rea">REA</span>
     </a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#papeleria">Papeleria</a></li>
+      <li><a href="#horario">Horario</a></li>
+      <li><a href="#valores">Nosotros</a></li>
+      <li><a href="galeria_perfumes.html">💐 Perfumes</a></li>
+      <li>
+        <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios"
+          class="nav-cta" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+      </li>
+    </ul>
+    <button class="nav-menu-btn" id="navMenuBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <!-- Scroll to Top -->
-    <div class="scroll-top" id="scrollTop">↑</div>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <div class="nav-mobile-panel" id="navMobilePanel">
+    <ul class="nav-mobile-links">
+      <li><a href="#servicios" onclick="closeMobileNav()">Servicios</a></li>
+      <li><a href="#papeleria" onclick="closeMobileNav()">Papelería</a></li>
+      <li><a href="#horario" onclick="closeMobileNav()">Horario</a></li>
+      <li><a href="#valores" onclick="closeMobileNav()">Nosotros</a></li>
+      <li><a href="galeria_perfumes.html">Perfumes</a></li>
+    </ul>
+    <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios"
+      class="nav-mobile-wa" target="_blank" rel="noopener noreferrer">💬 CONTÁCTANOS POR WHATSAPP</a>
+    <div class="nav-mobile-info">
+      📍 San Andrés Tuxtla, Ver · Sinergia REA 2026
+    </div>
+  </div>
 
-    <div class="wrapper">
-        <div class="container">
-            <!-- HEADER -->
-            <div class="header">
-                <!-- Esferas animadas según hora del día -->
-                <div class="time-spheres" id="timeSpheres"></div>
-                
-                <div class="logo-container">
-                    <!-- Sol Radiante Primavera -->
-                    <div class="escudo-mexico" role="img" aria-label="Sol radiante del equinoccio de primavera">
-                        <span class="escudo-ring" aria-hidden="true"></span>
-                        <span class="escudo-core" aria-hidden="true">
-                            <span class="escudo-crown">✨</span>
-                            <span class="escudo-icon-eagle">☀️</span>
-                        </span>
-                    </div>
-                    
-                    <h1 id="dynamicGreeting">✨ ¡Buenos días! ✨</h1>
-                    <p id="dynamicSubtitle">Bienvenido a marzo 2026 - Primavera</p>
-                </div>
-            </div>
+  <!-- ══ HERO DINÁMICO ══ -->
+  <div class="hero" id="heroSection">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="grid-overlay"></div>
+    <div class="noise-overlay"></div>
 
-            <!-- HERO SECTION CON COUNTDOWN -->
-                <div class="hero-section">
-                    <div class="countdown-container">
-                        <h2 class="countdown-title">
-                            <span class="title-badge" id="campaignDateBadge">21 MAR</span>
-                            <span class="title-main" id="campaignTitleMain">Natalicio de Benito Juarez y Equinoccio de Primavera</span>
-                            <span class="title-seal" aria-hidden="true">MX</span>
-                        </h2>
-                        <div class="countdown-timer" id="countdown">
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="days">0</span>
-                            <span class="countdown-label">Días</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="hours">0</span>
-                            <span class="countdown-label">Horas</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="minutes">0</span>
-                            <span class="countdown-label">Minutos</span>
-                        </div>
-                        <div class="countdown-item">
-                            <span class="countdown-number" id="seconds">0</span>
-                            <span class="countdown-label">Segundos</span>
-                        </div>
-                    </div>
-                        <div class="hero-subtitle" role="note" aria-label="Contexto de la celebracion del 21 de marzo">
-                            <p class="hero-subtitle-title">Un dia de memoria, renovacion y accion social</p>
-                            <p class="hero-subtitle-text">
-                                Celebramos a <strong>Benito Juarez (1806)</strong>, el inicio de la <strong>Primavera</strong> y valores de inclusion, educacion, poesia y cuidado de bosques.
-                            </p>
-                            <div class="hero-subtitle-tags" aria-label="Temas destacados">
-                                <span class="hero-tag">Historia y civismo</span>
-                                <span class="hero-tag">Renovacion y naturaleza</span>
-                                <span class="hero-tag">Inclusion y conciencia social</span>
-                            </div>
-                        </div>
-                    
-                    <div class="hero-cta">
-                        <a href="galeria_perfumes.html" class="btn-primary">
-                            💐 Ver Galería de Perfumes
-                        </a>
-                        <a href="#servicios" class="btn-secondary">
-                            📋 Conocer Servicios
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <!-- Esferas flotantes dinámicas -->
+    <div class="hero-spheres" id="heroSpheres"></div>
 
-            <!-- TRUST BADGES -->
-            <div class="trust-section">
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <span class="trust-icon">⭐</span>
-                        <div class="trust-title">500+</div>
-                        <div class="trust-subtitle">Clientes Satisfechos</div>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="trust-icon">🏆</span>
-                        <div class="trust-title">5 Años</div>
-                        <div class="trust-subtitle">De Experiencia</div>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="trust-icon">🌸</span>
-                        <div class="trust-title">Empresa Consciente</div>
-                        <div class="trust-subtitle">Veracruz, México - Por un México mejor</div>
-                    </div>
-                    <div class="trust-badge">
-                        <span class="trust-icon">🔒</span>
-                        <div class="trust-title">100% Seguro</div>
-                        <div class="trust-subtitle">Confianza Garantizada</div>
-                    </div>
-                </div>
-            </div>
+    <!-- Icono dinámico del momento del día -->
+    <div class="hero-time-icon" id="heroTimeIcon">☀️</div>
 
-            <!-- BANNER INFORMATIVO -->
-          
-            <div class="info-banner">
-                <div class="banner-decoration">
-                    <div class="confetti">🎉</div>
-                    <div class="confetti">🎊</div>
-                    <div class="confetti">✨</div>
-                    <div class="confetti">🌟</div>
-                </div>
-                <div class="info-icon-wrapper">
-                    <div class="info-icon">📢</div>
-                </div>
-                <div class="info-content">
-                    <h3 class="info-title">¿Sabías que el 21 de marzo es...?</h3>
-                    <p class="info-text">🇲🇽 <strong>Natalicio de Benito Juárez (1806)</strong> - Fundador del Estado moderno mexicano, símbolo de reforma y libertad.<br>
-                    🌸 <strong>Equinoccio de Primavera</strong> - Inicio de la estación, renovación y energía natural.<br>
-                    ✊ <strong>Día Internacional contra la Discriminación Racial</strong> - Promoviendo igualdad y respeto.<br>
-                    🌳 <strong>Día Internacional de los Bosques</strong> - Cuidando nuestro planeta.<br>
-                    📖 <strong>Día Mundial de la Poesía</strong> - Celebrando la expresión artística.<br>
-                    💙 <strong>Día del Síndrome de Down</strong> - Valorando la diversidad e inclusión.
-                    </p>
-                </div>
-                <div class="banner-shine"></div>
-            </div>
+    <!-- Saludo dinámico -->
+    <div class="hero-greeting" id="heroGreeting">¡Buenos días!</div>
 
-            <!-- CONTENIDO PRINCIPAL -->
-            <div class="content" id="servicios">
-                <div class="section-header">
-                    <h2>✨ Nuestros Servicios ✨</h2>
-                    <p><strong>Sinergia REA</strong> tiene todo lo que necesitas 💼✨</p>
-                </div>
+    <!-- Subtítulo de contexto -->
+    <p class="hero-greeting-sub" id="heroGreetingSub">
+      Bienvenido a marzo 2026 · Primavera
+    </p>
 
-                <!-- GALERÍA CON FILTROS Y PERFUMES -->
-                <div class="gallery-section">
-                   
-                    <h2 class="section-title">
-                        <span class="emoji">🎁</span>
-                        Galería de Productos
-                    </h2>
-                    
-                    <div class="filter-bar">
-                        <button class="filter-btn active" data-filter="all">Todos</button>
-                        <button class="filter-btn" data-filter="papeleria">Papelería</button>
-                        <button class="filter-btn" data-filter="perfumes">Perfumes</button>
-                        <button class="filter-btn" data-filter="tecnologia">Tecnología</button>
-                    </div>
-
-                    <div class="gallery-grid">
-                        <div class="gallery-item" data-category="papeleria">
-                            <div class="gallery-icon">📦</div>
-                            <div class="gallery-overlay">
-                                <p>📄 Papelería y Útiles ✏️</p>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-category="papeleria">
-                            <div class="gallery-icon">🖨️</div>
-                            <div class="gallery-overlay">
-                                <p>🎨 Impresiones a Color 🌈</p>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-category="papeleria">
-                            <div class="gallery-icon">📚</div>
-                            <div class="gallery-overlay">
-                                <p>📖 Material Educativo 🎓</p>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-category="tecnologia">
-                            <div class="gallery-icon">💻</div>
-                            <div class="gallery-overlay">
-                                <p>⚙️ Servicios Tecnológicos 🔧</p>
-                            </div>
-                        </div>
-                        <div class="gallery-item" data-category="papeleria">
-                            <div class="gallery-icon">📋</div>
-                            <div class="gallery-overlay">
-                                <p>🏛️ Trámites Fiscales 💼</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                </div>
-
-                <!-- Sección Papelería -->
-                <div class="section">
-                    <h2 class="section-title">
-                        <span class="emoji">📄</span>
-                        Papelería e Impresiones
-                    </h2>
-                    
-                    <div class="service-item">
-                        <span class="emoji">⚫</span>
-                        <span>🖨️ Copias e impresiones en blanco y negro (carta y oficio)</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">🌈</span>
-                        <span>🎨 Copias e impresiones a COLOR (carta y oficio)</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">📸</span>
-                        <span><strong>🆔 Copias de INE y ampliaciones al 200%</strong></span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">📦</span>
-                        <span>📄 Paquete de 500 hojas blancas HP - <span class="price">💰 ¡Solo $110!</span></span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">📁</span>
-                        <span>📂 Carpetas tamaño carta (beige y amarillo)</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">✏️</span>
-                        <span>✍️ Marca texto doble punta • Barras de silicón • Sacapuntas • Clips</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">🎨</span>
-                        <span>🌈 Hojas de colores y hojas blancas sueltas</span>
-                    </div>
-                </div>
-
-                <!-- Celebración 21 de Marzo: Múltiples significados -->
-                <div class="special-offer">
-                    <div class="offer-badge" id="campaignOfferBadge">21 DE MARZO: CELEBRACION MULTIPLE</div>
-                    <h2 id="campaignOfferTitle">Benito Juarez, Primavera y Conciencia Social</h2>
-                    <p class="offer-lead"><strong>Impresiones en papel fotografico adhesivo</strong></p>
-                    <p class="offer-copy">Imprime flores primaverales, retratos historicos, frases poeticas o mensajes de inclusion y sostenibilidad.</p>
-                    <div class="offer-features">
-                        <div class="feature-item"><span class="feature-icon" aria-hidden="true">&#10003;</span> Colores magistrales y vibrantes</div>
-                        <div class="feature-item"><span class="feature-icon" aria-hidden="true">&#10003;</span> Adhesivo resistente y duradero</div>
-                        <div class="feature-item"><span class="feature-icon" aria-hidden="true">&#10003;</span> Perfecto para arte y conciencia social</div>
-                    </div>
-                </div>
-
-                <!-- Sección Educación -->
-                <div class="section">
-                    <h2 class="section-title">
-                        <span class="emoji">📚</span>
-                        Servicios Educativos
-                    </h2>
-                    
-                    <div class="service-item">
-                        <span class="emoji">🎓</span>
-                        <span><strong>📖 Material didáctico</strong> (Español y Matemáticas) para preescolar, primaria y secundaria 🧮</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">✍️</span>
-                        <span><strong>📝 Realización de tareas escolares</strong> e investigaciones 🔍</span>
-                    </div>
-                </div>
-
-                <!-- Sección Servicios Fiscales -->
-                <div class="section">
-                    <h2 class="section-title">
-                        <span class="emoji">💼</span>
-                        Servicios Fiscales y Administrativos
-                    </h2>
-                    
-                    <div class="service-item">
-                        <span class="emoji">🏛️</span>
-                        <span><strong>🧾 SAT:</strong> Agenda de citas, seguimiento completo del proceso y análisis de tu situación fiscal 📊</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">🏥</span>
-                        <span><strong>⚕️ IMSS:</strong> Altas, emisión de pagos de SUA, liquidaciones de obra y asesoría para pensión 💳</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">🏠</span>
-                        <span><strong>🏘️ Infonavit:</strong> Alta y verificación de puntos ✅</span>
-                    </div>
-                </div>
-                <!-- Sección Tecnología -->
-                <div class="section">
-                    <h2 class="section-title">
-                        <span class="emoji">💻</span>
-                        Servicios Tecnológicos
-                    </h2>
-                    
-                    <div class="service-item">
-                        <span class="emoji">⚙️</span>
-                        <span><strong>🔧 Formateo y optimización</strong> de sistemas operativos para PC y laptops 💾</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">📊</span>
-                        <span><strong>📝 Instalación de Microsoft Office</strong> (Word, Excel, PowerPoint) 📄</span>
-                    </div>
-                    
-                    <div class="service-item">
-                        <span class="emoji">🛡️</span>
-                        <span>🔒 Instalación de antivirus y programas de seguridad</span>
-                    </div>
-                </div>
-
-                <!-- Horario -->
-                <div class="schedule">
-                    <h3>⏰ Nuestro Horario de Atención</h3>
-                    
-                    <div class="schedule-item">
-                        <span class="emoji">📅</span>
-                        <span><strong>Lunes a Viernes:</strong> 6:00 AM - 7:00 AM | 5:00 PM - 10:00 PM</span>
-                    </div>
-                    
-                    <div class="schedule-item">
-                        <span class="emoji">🎯</span>
-                        <span><strong>Sábados:</strong> 11:00 AM - 7:00 PM</span>
-                    </div>
-                    
-                    <div class="schedule-item">
-                        <span class="emoji">📞</span>
-                        <span><strong>Contáctanos:</strong> Envíanos un WhatsApp y te atenderemos 💚</span>
-                    </div>
-                </div>
-
-                <!-- Valores y Compromiso -->
-                <div class="values-section">
-                    <h3>🌟 Nuestros Valores</h3>
-                    <div class="values-grid">
-                        <div class="value-card">
-                            <div class="value-icon">💯</div>
-                            <h4>Calidad</h4>
-                            <p>Servicios de primera</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="value-icon">⚡</div>
-                            <h4>Rapidez</h4>
-                            <p>Atención eficiente</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="value-icon">💰</div>
-                            <h4>Precio Justo</h4>
-                            <p>Accesible para todos</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="value-icon">🤝</div>
-                            <h4>Confianza</h4>
-                            <p>Tu aliado de siempre</p>
-                        </div>
-                    </div>
-                </div>
-
-            <!-- FOOTER -->
-            <div class="footer">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <h4>🎖️ SINERGIA REA 🎖️</h4>
-                        <p>Tu solución integral en un solo lugar</p>
-                    </div>
-                    <div class="footer-info">
-                        <p>📍 <strong>Veracruz, México</strong></p>
-                        <p>💬 Contáctanos por WhatsApp</p>
-                        <p>✨ ¡Que tengas un excelente día! ✨</p>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>🎖️ Orgullosamente Mexicanos 🦅</p>
-                    <p class="footer-copy">© 2026 Sinergia REA - ¡Click solucionado! 💡</p>
-                </div>
-            </div>
-        </div>
+    <!-- Badge de empresa -->
+    <div class="badge" style="margin-top: 24px">
+      <span class="badge-dot"></span>
+      <span>SINERGIA REA · PAPELERÍA &amp; SERVICIOS CONTABLES E INFORMÁTICOS
+      </span>
     </div>
 
-    <script src="assets/campaign.js"></script>
-    <script src="assets/loader.js"></script>
-    <script src="assets/index.js"></script>
+    <!-- CTAs -->
+    <div class="hero-cta">
+      <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios"
+        class="btn-primary" target="_blank" rel="noopener noreferrer">💬 Escríbenos por WhatsApp</a>
+      <a href="galeria_perfumes.html" class="btn-galeria">💐 Ver Galería de Perfumes</a>
+      <a href="#servicios" class="btn-secondary">Ver Servicios</a>
+    </div>
+
+    <div class="scroll-hint">SCROLL</div>
+  </div>
+
+  <!-- ══ STATS ══ -->
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-num">120+</div>
+      <div class="stat-label">CLIENTES SATISFECHOS</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">AÑOS DE EXPERIENCIA</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">LOCAL · CONFIANZA</div>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <div class="stat-num">MX</div>
+      <div class="stat-label">ORGULLOSAMENTE MEXICANOS</div>
+    </div>
+  </div>
+
+  <!-- ══ BANNER INFORMATIVO DEL MES ══ -->
+  <div class="info-mes-wrap" id="infoMesWrap">
+    <div class="info-mes-inner">
+      <div class="info-mes-header">
+        <span class="info-mes-icon" id="infoMesIcon">📢</span>
+        <div>
+          <div class="info-mes-label">21 DE MARZO</div>
+          <h3 class="info-mes-title">¿Sabías que hoy es un día especial?</h3>
+        </div>
+      </div>
+      <div class="info-mes-grid">
+        <div class="info-mes-item">
+          <span class="imi-emoji">🇲🇽</span>
+          <div>
+            <strong>Natalicio de Benito Juárez (1806)</strong>
+            <p>
+              Fundador del Estado moderno mexicano, símbolo de reforma y
+              libertad.
+            </p>
+          </div>
+        </div>
+        <div class="info-mes-item">
+          <span class="imi-emoji">🌸</span>
+          <div>
+            <strong>Equinoccio de Primavera</strong>
+            <p>Inicio de la estación, renovación y energía natural.</p>
+          </div>
+        </div>
+        <div class="info-mes-item">
+          <span class="imi-emoji">✊</span>
+          <div>
+            <strong>Día contra la Discriminación Racial</strong>
+            <p>Promoviendo igualdad y respeto en el mundo.</p>
+          </div>
+        </div>
+        <div class="info-mes-item">
+          <span class="imi-emoji">🌳</span>
+          <div>
+            <strong>Día Internacional de los Bosques</strong>
+            <p>Cuidando nuestro planeta y sus recursos naturales.</p>
+          </div>
+        </div>
+        <div class="info-mes-item">
+          <span class="imi-emoji">📖</span>
+          <div>
+            <strong>Día Mundial de la Poesía</strong>
+            <p>Celebrando la expresión artística y literaria.</p>
+          </div>
+        </div>
+        <div class="info-mes-item">
+          <span class="imi-emoji">💙</span>
+          <div>
+            <strong>Día del Síndrome de Down</strong>
+            <p>Valorando la diversidad, inclusión y dignidad humana.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ SERVICIOS ══ -->
+  <div id="servicios">
+    <section class="reveal">
+      <div class="section-label">01 &nbsp; NUESTROS SERVICIOS</div>
+      <h2 class="section-title">
+        Todo lo que<br /><span style="color: var(--rosa)">necesitas</span>
+      </h2>
+      <div class="highlight">
+        <p>
+          <strong>Sinergia REA</strong> es tu solución integral en un solo
+          lugar. Papelería, impresiones, trámites fiscales, tecnología y
+          material educativo — con la calidez y atención que mereces.
+        </p>
+      </div>
+      <div class="servicios-grid">
+        <div class="servicio-card">
+          <div class="sv-number">01</div>
+          <span class="sv-icon">📄</span>
+          <div class="sv-badge sv-badge-negro">
+            Papelería &amp; Impresiones
+          </div>
+          <div class="sv-title">Papelería e Impresiones</div>
+          <ul class="sv-list">
+            <li>Copias e impresiones B/N (carta y oficio)</li>
+            <li>Impresiones a COLOR (carta y oficio)</li>
+            <li>Copias de INE y ampliaciones al 200%</li>
+            <li>Impresiones en papel fotográfico adhesivo</li>
+            <li>Hojas de colores y material de oficina</li>
+          </ul>
+        </div>
+        <div class="servicio-card">
+          <div class="sv-number">02</div>
+          <span class="sv-icon">🏛️</span>
+          <div class="sv-badge sv-badge-rosa">Trámites Fiscales</div>
+          <div class="sv-title">Trámites Fiscales y Laborales</div>
+          <ul class="sv-list">
+            <li><strong>SAT</strong> — Agenda de citas y análisis fiscal</li>
+            <li><strong>IMSS</strong> — Altas, pagos SUA, liquidaciones</li>
+            <li>
+              <strong>Infonavit</strong> — Alta y verificación de puntos
+            </li>
+            <li>Seguimiento completo del proceso</li>
+            <li>Asesoría personalizada</li>
+          </ul>
+        </div>
+        <div class="servicio-card">
+          <div class="sv-number">03</div>
+          <span class="sv-icon">💻</span>
+          <div class="sv-badge sv-badge-azul">Tecnología</div>
+          <div class="sv-title">Servicios Tecnológicos</div>
+          <ul class="sv-list">
+            <li>Formateo y optimización de PC y laptops</li>
+            <li>Instalación de Microsoft Office (Word, Excel, PP)</li>
+            <li>Instalación de antivirus y seguridad</li>
+            <li>Diagnóstico y soporte técnico</li>
+          </ul>
+        </div>
+        <div class="servicio-card">
+          <div class="sv-number">04</div>
+          <span class="sv-icon">🧩</span>
+          <div class="sv-badge sv-badge-verde">Recursos</div>
+          <div class="sv-title">Material y Recursos Educativos</div>
+          <ul class="sv-list">
+            <li>Elaboración y venta de material didáctico</li>
+            <li>Recursos educativos de Español y Matemáticas</li>
+            <li>Contenido para preescolar, primaria y secundaria</li>
+            <li>Guías de estudio y cuadernos de apoyo</li>
+            <li>Material digital y listo para imprimir</li>
+          </ul>
+        </div>
+
+        <div class="servicio-card">
+          <div class="sv-number">05</div>
+          <span class="sv-icon">🎓</span>
+          <div class="sv-badge sv-badge-azul">Asesoría</div>
+          <div class="sv-title">Apoyo y Asesoría Académica</div>
+          <ul class="sv-list">
+            <li>Apoyo en tareas escolares y proyectos</li>
+            <li>Elaboración de mapas conceptuales y trabajos</li>
+            <li>Desarrollo de investigaciones y monografías</li>
+            <li>Tutorías personalizadas por nivel educativo</li>
+            <li>Regularización en Español y Matemáticas</li>
+            <li>Seguimiento y acompañamiento académico</li>
+          </ul>
+        </div>
+        <div class="servicio-card">
+          <div class="sv-number">06</div>
+          <span class="sv-icon">💻</span>
+          <div class="sv-badge sv-badge-morado">Capacitación</div>
+          <div class="sv-title">Cursos y Capacitación Digital</div>
+          <ul class="sv-list">
+            <li>Acceso a cursos de plataformas como Udemy</li>
+            <li>Cursos de Excel, PowerPoint y herramientas digitales</li>
+            <li>Capacitación en programación básica e intermedia</li>
+            <li>Opciones de cursos gratuitos y de bajo costo</li>
+            <li>Recomendación de rutas de aprendizaje</li>
+            <li>Apoyo para inscripción y seguimiento</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ PAPELERÍA ══ -->
+  <div class="bg-papel" id="papeleria">
+    <section class="reveal">
+      <div class="section-label">02 &nbsp; PRODUCTOS</div>
+      <h2 class="section-title">
+        Papelería<br /><span style="color: var(--azul)">y útiles</span>
+      </h2>
+      <div class="papeleria-grid">
+        <div class="papel-item">
+          <span class="pi-icon">📦</span>
+          <div class="pi-name">Paquete 500 hojas HP</div>
+          <div class="pi-desc">
+            Hojas blancas carta ·
+            <span style="color: var(--rosa); font-weight: 700">Solo $110</span>
+          </div>
+        </div>
+        <div class="papel-item">
+          <span class="pi-icon">🖨️</span>
+          <div class="pi-name">Copias B/N</div>
+          <div class="pi-desc">Carta y oficio · Rápido y económico</div>
+        </div>
+        <div class="papel-item">
+          <span class="pi-icon">🌈</span>
+          <div class="pi-name">Impresiones a Color</div>
+          <div class="pi-desc">Carta y oficio · Colores vibrantes</div>
+        </div>
+        <div class="papel-item">
+          <span class="pi-icon">📸</span>
+          <div class="pi-name">Copias de INE</div>
+          <div class="pi-desc">Ampliaciones al 200%</div>
+        </div>
+        <div class="papel-item">
+          <span class="pi-icon">📁</span>
+          <div class="pi-name">Carpetas Carta</div>
+          <div class="pi-desc">Beige y amarillo</div>
+        </div>
+        <div class="papel-item">
+          <span class="pi-icon">✏️</span>
+          <div class="pi-name">Útiles Escolares</div>
+          <div class="pi-desc">
+            Marcatextos, barras de silicón, clips, sacapuntas
+          </div>
+        </div>
+        <div class="papel-item">
+          <span class="pi-icon">🎨</span>
+          <div class="pi-name">Hojas de Colores</div>
+          <div class="pi-desc">Sueltas y en paquetes</div>
+        </div>
+        <div class="papel-item">
+          <span class="pi-icon">📷</span>
+          <div class="pi-name">Papel Fotográfico Adhesivo</div>
+          <div class="pi-desc">Resistente · Colores magistrales</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ HORARIO ══ -->
+  <div id="horario">
+    <section class="reveal">
+      <div class="section-label">03 &nbsp; ATENCIÓN</div>
+      <h2 class="section-title">
+        Nuestro<br /><span style="color: var(--amarillo)">horario</span>
+      </h2>
+      <div class="horario-wrap">
+        <div class="horario-item">
+          <div class="h-dia">Lunes a Viernes — Mañana</div>
+          <div class="h-hora">6:00 AM<br />— 7:00 AM</div>
+        </div>
+        <div class="horario-item">
+          <div class="h-dia">Lunes a Viernes — Tarde</div>
+          <div class="h-hora">5:00 PM<br />— 10:00 PM</div>
+        </div>
+        <div class="horario-item" style="background: rgba(255, 45, 120, 0.04)">
+          <div class="h-dia" style="color: var(--azul)">Sábados</div>
+          <div class="h-hora">11:00 AM<br />— 7:00 PM</div>
+        </div>
+        <div class="horario-item">
+          <div class="h-dia">WhatsApp</div>
+          <div class="h-hora" style="font-size: 22px; line-height: 1.3">
+            Escríbenos<br />cuando quieras 💬
+          </div>
+        </div>
+      </div>
+      <br /><br />
+      <div class="feature-box">
+        <div class="fb-item">
+          <div class="fb-label fb-label-rosa">📍 Ubicación</div>
+          <div class="fb-text">
+            <strong>San Andrés Tuxtla, Ver</strong><br />
+          </div>
+        </div>
+        <div class="fb-item">
+          <div class="fb-label fb-label-azul">📞 Contacto Directo</div>
+          <div class="fb-text">
+            <strong>WhatsApp disponible</strong><br />Escríbenos y te
+            atendemos ·
+            <a href="https://wa.me/525645003181">+52 56 4500 3181</a>
+          </div>
+        </div>
+        <div class="fb-item">
+          <div class="fb-label fb-label-amarillo">⭐ Confianza</div>
+          <div class="fb-text">
+            <strong>5 años de experiencia</strong><br />Más de 120 clientes
+            satisfechos en San Andrés Tuxtla
+          </div>
+        </div>
+        <div class="fb-item">
+          <div class="fb-label fb-label-negro">🇲🇽 Misión</div>
+          <div class="fb-text">
+            <strong>Empresa consciente</strong><br />Por un México mejor ·
+            Inclusión y educación como valores
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ PERFUMES ══ -->
+  <div id="perfumes">
+    <section class="reveal">
+      <div class="section-label">04 &nbsp; PERFUMES L'BEL</div>
+      <h2 class="section-title">
+        Galería de<br /><span style="color: var(--rosa)">fragancias</span>
+      </h2>
+      <div class="highlight">
+        <p>
+          Contamos con una
+          <strong>exclusiva colección de perfumes L'BEL</strong> — fragancias
+          de alta perfumería francesa para él y para ella. Visita nuestra
+          galería y pregunta por el muestrario de aromas.
+        </p>
+      </div>
+      <div class="servicios-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))">
+        <div class="servicio-card" style="text-align: center">
+          <span class="sv-icon">💐</span>
+          <div class="sv-badge sv-badge-rosa">Para Ella</div>
+          <div class="sv-title">Miss L'BEL</div>
+          <p style="font-size: 13px; color: var(--gris-txt); margin-top: 6px">
+            Floral frutal · Alta perfumería francesa
+          </p>
+        </div>
+        <div class="servicio-card" style="text-align: center">
+          <span class="sv-icon">🌊</span>
+          <div class="sv-badge sv-badge-azul">Para Él</div>
+          <div class="sv-title">Familia Bleu</div>
+          <p style="font-size: 13px; color: var(--gris-txt); margin-top: 6px">
+            Bleu Intense · Bleu Night · Bleu Glacial
+          </p>
+        </div>
+        <div class="servicio-card" style="text-align: center">
+          <span class="sv-icon">✨</span>
+          <div class="sv-badge sv-badge-amarillo">Unisex</div>
+          <div class="sv-title">YOU Eau de Toilette</div>
+          <p style="font-size: 13px; color: var(--gris-txt); margin-top: 6px">
+            Frutal · Bergamota · Lavanda
+          </p>
+        </div>
+        <div class="servicio-card" style="text-align: center">
+          <span class="sv-icon">🌿</span>
+          <div class="sv-badge sv-badge-negro">Línea Live</div>
+          <div class="sv-title">Live Adventure</div>
+          <p style="font-size: 13px; color: var(--gris-txt); margin-top: 6px">
+            Menta · Lavanda · Nuez moscada
+          </p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px">
+        <a href="galeria_perfumes.html" class="btn-galeria">💐 Ver Galería Completa de Perfumes</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ VALORES ══ -->
+  <div class="bg-papel" id="valores">
+    <section class="reveal">
+      <div class="section-label">05 &nbsp; NOSOTROS</div>
+      <h2 class="section-title">
+        Nuestros<br /><span style="color: var(--negro)">valores</span>
+      </h2>
+      <div class="valores-grid">
+        <div class="valor-card">
+          <span class="vl-icon">💯</span>
+          <div class="vl-title">Calidad</div>
+          <div class="vl-desc">
+            Servicios de primera. Cada impresión, cada trámite, con el máximo
+            cuidado.
+          </div>
+        </div>
+        <div class="valor-card">
+          <span class="vl-icon">⚡</span>
+          <div class="vl-title">Rapidez</div>
+          <div class="vl-desc">
+            Atención eficiente. Tu tiempo es valioso y lo sabemos.
+          </div>
+        </div>
+        <div class="valor-card">
+          <span class="vl-icon">💰</span>
+          <div class="vl-title">Precio Justo</div>
+          <div class="vl-desc">
+            Accesible para todos. Servicios de calidad sin costos exagerados.
+          </div>
+        </div>
+        <div class="valor-card">
+          <span class="vl-icon">🤝</span>
+          <div class="vl-title">Confianza</div>
+          <div class="vl-desc">
+            Tu aliado de siempre. Construimos relaciones duraderas con cada
+            cliente.
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ══ FOOTER ══ igual que galería ══ -->
+  <div class="footer-accent-bar"></div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span class="fl-sin">Sin</span><span class="fl-ergia">ergia</span>&nbsp;<span class="fl-rea">REA</span>
+      </div>
+      <div class="footer-tagline">
+        Tu Solución Integral · Papelería &amp; servicios contables e informáticos   · Veracruz, México
+        2026
+      </div>
+      <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios"
+        class="footer-cta" target="_blank" rel="noopener noreferrer"><span>💬</span> CONTÁCTANOS POR WHATSAPP</a>
+      <div class="footer-tags">
+        <span class="footer-tag">PAPELERÍA</span><span class="footer-tag">IMPRESIONES COLOR</span>
+        <span class="footer-tag">COPIAS INE</span><span class="footer-tag">SAT</span>
+        <span class="footer-tag">IMSS</span><span class="footer-tag">INFONAVIT</span>
+        <span class="footer-tag">MICROSOFT OFFICE</span><span class="footer-tag">FORMATEO PC</span>
+        <span class="footer-tag">MATERIAL EDUCATIVO</span><span class="footer-tag">PERFUMES L'BEL</span>
+        <span class="footer-tag">TAREAS ESCOLARES</span><span class="footer-tag">VERACRUZ 2026</span>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-legal">
+        <br />
+         🦅 · © 2026 Sinergia REA
+      </div>
+      <div class="footer-location">
+        📍 San Andrés Tuxtla, Veracruz
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/campaign.js"></script>
+  <script src="assets/loader.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      // ── Progress bar + scroll top ──
+      const bar = document.getElementById("progressBar");
+      const top = document.getElementById("scrollTop");
+      let tick = false;
+      function onScroll() {
+        const y = document.documentElement.scrollTop;
+        const h =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        if (bar) bar.style.width = (y / h) * 100 + "%";
+        if (top) top.classList.toggle("visible", y > 300);
+      }
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (tick) return;
+          tick = true;
+          requestAnimationFrame(() => {
+            onScroll();
+            tick = false;
+          });
+        },
+        { passive: true },
+      );
+      onScroll();
+      if (top)
+        top.addEventListener("click", () =>
+          window.scrollTo({ top: 0, behavior: "smooth" }),
+        );
+
+      // ── Reveal on scroll ──
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+
+      // ── Smooth scroll ──
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const t = document.querySelector(a.getAttribute("href"));
+          if (t) {
+            e.preventDefault();
+            t.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // ── Nav hide/show on scroll ──
+      let lastY = 0;
+      const nav = document.querySelector("nav");
+      window.addEventListener(
+        "scroll",
+        () => {
+          const y = window.scrollY;
+          if (nav)
+            nav.style.transform =
+              y > lastY && y > 120 ? "translateY(-100%)" : "translateY(0)";
+          lastY = y;
+        },
+        { passive: true },
+      );
+
+      // ── Badge dinamico desde campaign.js ──
+      document.addEventListener("DOMContentLoaded", () => {
+        const c = window.REA_CAMPAIGN || {};
+        const b = document.getElementById("heroBadgeText");
+        if (b && c.shortDateLabel)
+          b.textContent =
+            c.shortDateLabel + " · PAPELERÍA & SERVICIOS · VERACRUZ";
+      });
+    })();
+
+    // ══════════════════════════════════════════════════════
+    // HERO DINÁMICO — tema y saludo según hora de México
+    // ══════════════════════════════════════════════════════
+    (function () {
+      // Obtener hora de México (GMT-6)
+      const now = new Date();
+      const mxTime = new Date(
+        now.toLocaleString("en-US", { timeZone: "America/Mexico_City" }),
+      );
+      const hour = mxTime.getHours();
+
+      // ── Configuración de temas ──────────────────────────────
+      // Modifica aquí los textos, iconos y colores de esferas
+      const temas = {
+        manana: {
+          clase: "theme-manana",
+          saludo: "¡Buenos días!",
+          sub: "Bienvenido a marzo 2026 · Primavera ☀️",
+          icono: "🌅",
+          esferas: ["#FFD700", "#FFA500", "#FFE4B5", "#87CEEB"],
+          loaderBg:
+            "linear-gradient(135deg, #81c784 0%, #fff9e6 50%, #ffb300 100%)",
+        },
+        tarde: {
+          clase: "theme-tarde",
+          saludo: "¡Buenas tardes!",
+          sub: "Bienvenido a marzo 2026 · Primavera 🌤️",
+          icono: "🌤️",
+          esferas: ["#FF8C00", "#FF6347", "#FFB6C1", "#FFA07A"],
+          loaderBg:
+            "linear-gradient(135deg, #1a472a 0%, #e8f5e9 30%, #fff9e6 50%, #ffd66d 70%, #4caf50 100%)",
+        },
+        noche: {
+          clase: "theme-noche",
+          saludo: "¡Buenas noches!",
+          sub: "Bienvenido a marzo 2026 · Primavera 🌙",
+          icono: "🌙",
+          esferas: ["#4169E1", "#9370DB", "#6495ED", "#8A2BE2"],
+          loaderBg:
+            "linear-gradient(135deg, #1A1A3E 0%, #16213E 50%, #533483 100%)",
+        },
+        madrugada: {
+          clase: "theme-madrugada",
+          saludo: "¡Buena madrugada!",
+          sub: "Velando contigo · Sinergia REA ✨",
+          icono: "✨",
+          esferas: ["#1a1a6e", "#2c2c8e", "#3a3aae", "#4a4ace"],
+          loaderBg:
+            "linear-gradient(135deg, #060818 0%, #0A0E27 50%, #1A0533 100%)",
+        },
+      };
+
+      // ── Determinar tema según horario ──────────────────────
+      let tema;
+      if (hour >= 6 && hour < 12) tema = temas.manana;
+      else if (hour >= 12 && hour < 19) tema = temas.tarde;
+      else if (hour >= 19 && hour < 24) tema = temas.noche;
+      else tema = temas.madrugada; // 0–5:59am
+
+      // ── Aplicar al hero ────────────────────────────────────
+      const heroEl = document.getElementById("heroSection");
+      const greetingEl = document.getElementById("heroGreeting");
+      const subEl = document.getElementById("heroGreetingSub");
+      const iconEl = document.getElementById("heroTimeIcon");
+
+      if (heroEl) heroEl.classList.add(tema.clase);
+      if (greetingEl) greetingEl.textContent = tema.saludo;
+      if (subEl) subEl.textContent = tema.sub;
+      if (iconEl) iconEl.textContent = tema.icono;
+
+      // ── Esferas flotantes ──────────────────────────────────
+      const spheresContainer = document.getElementById("heroSpheres");
+      if (spheresContainer) {
+        for (let i = 0; i < 6; i++) {
+          const s = document.createElement("div");
+          s.className = "hero-sphere";
+          const size = 14 + Math.random() * 32;
+          const color =
+            tema.esferas[Math.floor(Math.random() * tema.esferas.length)];
+          Object.assign(s.style, {
+            width: size + "px",
+            height: size + "px",
+            backgroundColor: color,
+            left: Math.random() * 100 + "%",
+            top: Math.random() * 100 + "%",
+            animationDelay: Math.random() * 6 + "s",
+            animationDuration: 8 + Math.random() * 5 + "s",
+          });
+          spheresContainer.appendChild(s);
+        }
+      }
+
+      // ── Sincronizar loader con el mismo tema ───────────────
+      const loader = document.getElementById("valentineLoader");
+      if (loader) {
+        loader.style.background = tema.loaderBg;
+      }
+    })();
+
+    // ── Menú hamburguesa ──
+    const navBtn = document.getElementById("navMenuBtn");
+    const navPanel = document.getElementById("navMobilePanel");
+    const navOvly = document.getElementById("navOverlay");
+    function openMobileNav() {
+      navBtn.classList.add("open");
+      navPanel.classList.add("open");
+      navOvly.classList.add("visible");
+      document.body.style.overflow = "hidden";
+    }
+    function closeMobileNav() {
+      navBtn.classList.remove("open");
+      navPanel.classList.remove("open");
+      navOvly.classList.remove("visible");
+      document.body.style.overflow = "";
+    }
+    if (navBtn)
+      navBtn.addEventListener("click", () =>
+        navBtn.classList.contains("open")
+          ? closeMobileNav()
+          : openMobileNav(),
+      );
+    if (navOvly) navOvly.addEventListener("click", closeMobileNav);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMobileNav();
+    });
+  </script>
 </body>
+
 </html>

@@ -5,9 +5,9 @@
     // Configuración centralizada para Marzo
     const config = {
         // Elección aleatoria entre flores y mariposas
-        emojis: ['🌸', '🌼', '🌻', '🦋', '🌺', '🌷'],
-        starEmojis: ['⭐', '✨', '🌟'],
-        colors: ['#ffd700', '#4caf50', '#e8f5e9', '#ff69b4', '#ffb300'],
+        /* ← Emojis flotantes en el loader */ emojis: ['🌸', '🌼', '🌻', '🦋', '🌺', '💫', '⭐', '✨'],
+        /* ← Emojis de estrellas */ starEmojis: ['✨', '💫', '🌟', '⭐'],
+        /* ← Colores de partículas — modifica estos para cambiar los colores */ colors: ['#0057FF', '#00C875', '#00E5FF', '#A855F7', '#3D8BFF', '#7B2FBE'],
         elementCount: 20,
         particleCount: 24,
         starCount: 9,
