@@ -18,7 +18,7 @@
 
     // Elementos del DOM
     const elements = {
-        loader: document.getElementById('valentineLoader'),
+        loader: document.getElementById('sinergiaLoader'),
         elementsContainer: document.getElementById('elementsContainer'),
         heartsContainer: document.getElementById('heartsContainer'), // Para compatibilidad
         particlesContainer: document.getElementById('particlesContainer')
@@ -196,6 +196,30 @@
         }, config.loaderDuration);
     }
 
+    // ========== INTEGRADOR DE CAMPAÑAS ==========
+    function applyCampaignData() {
+        const camp = window.REA_CAMPAIGN;
+        if (camp) {
+            // Actualizar icono central dinámico
+            const iconEl = document.getElementById('loaderDynamicIcon');
+            if (iconEl && camp.loaderIcon) {
+                iconEl.textContent = camp.loaderIcon;
+            }
+            // Actualizar imagen de fondo parallax
+            const bgImg = document.getElementById('loaderBgImg');
+            if (bgImg && camp.bannerImg) {
+                bgImg.src = camp.bannerImg;
+            }
+            // Actualizar partículas y colores si existen en la campaña
+            if (camp.loaderEmojis && camp.loaderEmojis.length > 0) {
+                config.emojis = camp.loaderEmojis;
+            }
+            if (camp.loaderColors && camp.loaderColors.length > 0) {
+                config.colors = camp.loaderColors;
+            }
+        }
+    }
+
     // ========== INICIALIZACIÓN ==========
     function init() {
         // Compatibilidad: usar elementsContainer si existe, sino heartsContainer
@@ -222,11 +246,14 @@
             config.loaderDuration = 1800;
         }
 
+        applyCampaignData(); // <--- Inyectar campaña
         applyDayTheme();
-        createFloatingElements();
-        createParticles();
-        createStars();
-        createGlitter();
+        
+        // Iniciar las partículas cuánticas del nuevo motor Canvas
+        if (typeof window.initQuantumParticles === 'function') {
+            window.initQuantumParticles();
+        }
+        
         hideLoader();
     }
 

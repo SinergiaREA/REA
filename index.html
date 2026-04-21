@@ -12,7 +12,7 @@
   <meta http-equiv="Permissions-Policy"
     content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()" />
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';" />
+    content="default-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="description"
     content="Sinergia REA — Papeleria, impresiones a color, tramites SAT IMSS Infonavit, servicios tecnologicos y material educativo. Tu solucion integral en Veracruz, Mexico." />
@@ -27,7 +27,7 @@
   <meta property="og:locale" content="es_MX" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sinergia REA — Tu Solucion Integral · Veracruz" />
-  <title>Sinergia REA | Papeleria y Servicios Contables e Informaticos</title>
+  <title>Sinergia REA |Servicios Contables e Informaticos y Papeleria </title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -35,40 +35,29 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="assets/loader.css" />
   <link rel="stylesheet" href="assets/light.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 
 <body>
   <!-- ══ LOADER ══ -->
-  <div class="valentine-loader" id="valentineLoader">
+  <div class="sinergia-loader" id="sinergiaLoader">
+    <!-- ── FONDO PARALLAX (Ken Burns) ── -->
+    <div class="loader-bg-wrap">
+      <img class="loader-bg-img" id="loaderBgImg" src="assets/sinergia-mesh.svg" alt="Sinergia REA Background">
+      <div class="loader-bg-overlay" id="loaderOverlay"></div>
+    </div>
+
+    <!-- ── QUANTUM PARTICLES CANVAS ── -->
+    <canvas id="quantumCanvas" style="position: absolute; inset:0; width:100%; height:100%; z-index:1;"></canvas>
+
     <div class="loader-particles" id="particlesContainer"></div>
     <div class="floating-hearts" id="heartsContainer"></div>
     <div class="loader-content">
       <div class="heart-spinner">
         <div class="heart-center">
-          <div class="spring-icon" role="img" aria-label="Flor primaveral">
-            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="spring-flower-svg" aria-hidden="true">
-              <defs>
-                <radialGradient id="cg" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#fff9e6" />
-                  <stop offset="100%" stop-color="#FFD54F" />
-                </radialGradient>
-                <radialGradient id="pg" cx="50%" cy="20%" r="80%">
-                  <stop offset="0%" stop-color="#00E5FF" />
-                  <stop offset="100%" stop-color="#0057FF" />
-                </radialGradient>
-              </defs>
-              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" />
-              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(45 60 60)" />
-              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(90 60 60)" />
-              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(135 60 60)" />
-              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(180 60 60)" />
-              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(225 60 60)" />
-              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(270 60 60)" />
-              <ellipse cx="60" cy="30" rx="11" ry="22" fill="url(#pg)" opacity=".93" transform="rotate(315 60 60)" />
-              <circle cx="60" cy="60" r="18" fill="url(#cg)" stroke="#FFB300" stroke-width="2.2" />
-              <circle cx="60" cy="60" r="10" fill="#FFA000" opacity=".65" />
-              <circle cx="56" cy="56" r="2.5" fill="#fff" opacity=".55" />
-            </svg>
+          <!-- Icono Dinámico inyectado por JS -->
+          <div class="spring-icon" id="loaderDynamicIcon" role="img" aria-label="Icono Dinámico">
+            ✨
           </div>
         </div>
       </div>
@@ -138,7 +127,11 @@
 
   <!-- ══ HERO DINÁMICO ══ -->
   <div class="hero" id="heroSection">
-    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-bg" id="heroBg">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" class="parallax-img" style="width: 100%; height: 125%; object-fit: cover; opacity: 0.08;" alt="Hero Pattern">
+    </div>
+    <!-- TS PARTICLES CONTAINER -->
+    <div id="tsparticles" style="position: absolute; inset:0; z-index: 0; pointer-events: auto;"></div>
     <div class="grid-overlay"></div>
     <div class="noise-overlay"></div>
 
@@ -198,61 +191,22 @@
   </div>
 
   <!-- ══ BANNER INFORMATIVO DEL MES ══ -->
-  <div class="info-mes-wrap" id="infoMesWrap">
+  <div class="info-mes-wrap" id="infoMesWrap" data-aos="fade-up" data-aos-duration="1000" style="display: none;">
+    <!-- IMAGEN DE FONDO PARALLAX -->
+    <img class="parallax-img banner-bg-img" src="assets/sinergia-mesh.svg" alt="Fondo Sinergia Parallax">
+    <div class="info-mes-overlay"></div>
+    <!-- TS PARTICLES DEL BANNER -->
+    <div id="tsparticles-banner" style="position: absolute; inset:0; z-index: 1; pointer-events: none;"></div>
     <div class="info-mes-inner">
       <div class="info-mes-header">
-        <span class="info-mes-icon" id="infoMesIcon">📢</span>
+        <span class="info-mes-icon" id="infoMesIcon">✨</span>
         <div>
-          <div class="info-mes-label">21 DE MARZO</div>
-          <h3 class="info-mes-title">¿Sabías que hoy es un día especial?</h3>
+          <div class="info-mes-label" id="infoMesLabel">MES ACTUAL</div>
+          <h3 class="info-mes-title" id="infoMesTitle">Efemérides Destacadas</h3>
         </div>
       </div>
-      <div class="info-mes-grid">
-        <div class="info-mes-item">
-          <span class="imi-emoji">🇲🇽</span>
-          <div>
-            <strong>Natalicio de Benito Juárez (1806)</strong>
-            <p>
-              Fundador del Estado moderno mexicano, símbolo de reforma y
-              libertad.
-            </p>
-          </div>
-        </div>
-        <div class="info-mes-item">
-          <span class="imi-emoji">🌸</span>
-          <div>
-            <strong>Equinoccio de Primavera</strong>
-            <p>Inicio de la estación, renovación y energía natural.</p>
-          </div>
-        </div>
-        <div class="info-mes-item">
-          <span class="imi-emoji">✊</span>
-          <div>
-            <strong>Día contra la Discriminación Racial</strong>
-            <p>Promoviendo igualdad y respeto en el mundo.</p>
-          </div>
-        </div>
-        <div class="info-mes-item">
-          <span class="imi-emoji">🌳</span>
-          <div>
-            <strong>Día Internacional de los Bosques</strong>
-            <p>Cuidando nuestro planeta y sus recursos naturales.</p>
-          </div>
-        </div>
-        <div class="info-mes-item">
-          <span class="imi-emoji">📖</span>
-          <div>
-            <strong>Día Mundial de la Poesía</strong>
-            <p>Celebrando la expresión artística y literaria.</p>
-          </div>
-        </div>
-        <div class="info-mes-item">
-          <span class="imi-emoji">💙</span>
-          <div>
-            <strong>Día del Síndrome de Down</strong>
-            <p>Valorando la diversidad, inclusión y dignidad humana.</p>
-          </div>
-        </div>
+      <div class="info-mes-grid" id="infoMesGrid">
+        <!-- Contenido dinámico inyectado por JS -->
       </div>
     </div>
   </div>
@@ -261,12 +215,12 @@
 
   <!-- ══ SERVICIOS ══ -->
   <div id="servicios">
-    <section class="reveal">
-      <div class="section-label">01 &nbsp; NUESTROS SERVICIOS</div>
-      <h2 class="section-title">
+    <section>
+      <div class="section-label" data-aos="fade-right">01 &nbsp; NUESTROS SERVICIOS</div>
+      <h2 class="section-title" data-aos="fade-right" data-aos-delay="100">
         Todo lo que<br /><span style="color: var(--rosa)">necesitas</span>
       </h2>
-      <div class="highlight">
+      <div class="highlight" data-aos="fade-left" data-aos-delay="200">
         <p>
           <strong>Sinergia REA</strong> es tu solución integral en un solo
           lugar. Papelería, impresiones, trámites fiscales, tecnología y
@@ -366,9 +320,9 @@
 
   <!-- ══ PAPELERÍA ══ -->
   <div class="bg-papel" id="papeleria">
-    <section class="reveal">
-      <div class="section-label">02 &nbsp; PRODUCTOS</div>
-      <h2 class="section-title">
+    <section>
+      <div class="section-label" data-aos="fade-right">02 &nbsp; PRODUCTOS</div>
+      <h2 class="section-title" data-aos="fade-right" data-aos-delay="100">
         Papelería<br /><span style="color: var(--azul)">y útiles</span>
       </h2>
       <div class="papeleria-grid">
@@ -425,9 +379,9 @@
 
   <!-- ══ HORARIO ══ -->
   <div id="horario">
-    <section class="reveal">
-      <div class="section-label">03 &nbsp; ATENCIÓN</div>
-      <h2 class="section-title">
+    <section>
+      <div class="section-label" data-aos="fade-right">03 &nbsp; ATENCIÓN</div>
+      <h2 class="section-title" data-aos="fade-right" data-aos-delay="100">
         Nuestro<br /><span style="color: var(--amarillo)">horario</span>
       </h2>
       <div class="horario-wrap">
@@ -451,7 +405,7 @@
         </div>
       </div>
       <br /><br />
-      <div class="feature-box">
+      <div class="feature-box" data-aos="fade-left" data-aos-delay="200">
         <div class="fb-item">
           <div class="fb-label fb-label-rosa">📍 Ubicación</div>
           <div class="fb-text">
@@ -488,12 +442,12 @@
 
   <!-- ══ PERFUMES ══ -->
   <div id="perfumes">
-    <section class="reveal">
-      <div class="section-label">04 &nbsp; PERFUMES L'BEL</div>
-      <h2 class="section-title">
+    <section>
+      <div class="section-label" data-aos="fade-right">04 &nbsp; PERFUMES L'BEL</div>
+      <h2 class="section-title" data-aos="fade-right" data-aos-delay="100">
         Galería de<br /><span style="color: var(--rosa)">fragancias</span>
       </h2>
-      <div class="highlight">
+      <div class="highlight" data-aos="fade-left" data-aos-delay="200">
         <p>
           Contamos con una
           <strong>exclusiva colección de perfumes L'BEL</strong> — fragancias
@@ -545,9 +499,9 @@
 
   <!-- ══ VALORES ══ -->
   <div class="bg-papel" id="valores">
-    <section class="reveal">
-      <div class="section-label">05 &nbsp; NOSOTROS</div>
-      <h2 class="section-title">
+    <section>
+      <div class="section-label" data-aos="fade-right">05 &nbsp; NOSOTROS</div>
+      <h2 class="section-title" data-aos="fade-right" data-aos-delay="100">
         Nuestros<br /><span style="color: var(--negro)">valores</span>
       </h2>
       <div class="valores-grid">
@@ -588,37 +542,9 @@
   <div class="divider"></div>
 
   <!-- ══ FOOTER ══ igual que galería ══ -->
-  <div class="footer-accent-bar"></div>
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <span class="fl-sin">Sin</span><span class="fl-ergia">ergia</span>&nbsp;<span class="fl-rea">REA</span>
-      </div>
-      <div class="footer-tagline">
-        Tu Solución Integral · Papelería &amp; servicios contables e informáticos   · Veracruz, México
-        2026
-      </div>
-      <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios"
-        class="footer-cta" target="_blank" rel="noopener noreferrer"><span>💬</span> CONTÁCTANOS POR WHATSAPP</a>
-      <div class="footer-tags">
-        <span class="footer-tag">PAPELERÍA</span><span class="footer-tag">IMPRESIONES COLOR</span>
-        <span class="footer-tag">COPIAS INE</span><span class="footer-tag">SAT</span>
-        <span class="footer-tag">IMSS</span><span class="footer-tag">INFONAVIT</span>
-        <span class="footer-tag">MICROSOFT OFFICE</span><span class="footer-tag">FORMATEO PC</span>
-        <span class="footer-tag">MATERIAL EDUCATIVO</span><span class="footer-tag">PERFUMES L'BEL</span>
-        <span class="footer-tag">TAREAS ESCOLARES</span><span class="footer-tag">VERACRUZ 2026</span>
-      </div>
-      <div class="footer-divider"></div>
-      <div class="footer-legal">
-        <br />
-         🦅 · © 2026 Sinergia REA
-      </div>
-      <div class="footer-location">
-        📍 San Andrés Tuxtla, Veracruz
-      </div>
-    </div>
-  </footer>
+  <sinergia-footer></sinergia-footer>
 
+  <script type="module" src="js/components/SinergiaFooter.js"></script>
   <script src="assets/campaign.js"></script>
   <script src="assets/loader.js"></script>
   <script>
@@ -654,19 +580,7 @@
           window.scrollTo({ top: 0, behavior: "smooth" }),
         );
 
-      // ── Reveal on scroll ──
-      const obs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add("visible");
-              obs.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
-      );
-      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+      
 
       // ── Smooth scroll ──
       document.querySelectorAll('a[href^="#"]').forEach((a) => {
@@ -763,6 +677,20 @@
       else if (hour >= 19 && hour < 24) tema = temas.noche;
       else tema = temas.madrugada; // 0–5:59am
 
+      // --- CAMPAÑA OVERRIDE ---
+      const campaign = window.REA_CAMPAIGN || {};
+      if (campaign.hasSpecialCampaign) {
+        tema.esferas = campaign.heroColors || tema.esferas;
+        tema.sub = campaign.heroGreetingSub || tema.sub;
+        
+        // Actualizar CTA
+        const ctaEl = document.querySelector('.btn-galeria');
+        if (ctaEl && campaign.ctaText) {
+          ctaEl.textContent = campaign.ctaText;
+          ctaEl.href = campaign.ctaLink || "galeria_perfumes.html";
+        }
+      }
+
       // ── Aplicar al hero ────────────────────────────────────
       const heroEl = document.getElementById("heroSection");
       const greetingEl = document.getElementById("heroGreeting");
@@ -797,7 +725,7 @@
       }
 
       // ── Sincronizar loader con el mismo tema ───────────────
-      const loader = document.getElementById("valentineLoader");
+      const loader = document.getElementById("sinergiaLoader");
       if (loader) {
         loader.style.background = tema.loaderBg;
       }
@@ -826,10 +754,84 @@
           : openMobileNav(),
       );
     if (navOvly) navOvly.addEventListener("click", closeMobileNav);
+    // Escapar para cerrar
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeMobileNav();
     });
   </script>
+  
+  <!-- Librerías Externas -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  
+  <!-- Scripts Locales de Efectos Especiales -->
+  <script src="assets/quantum-particles.js"></script>
+  <script src="assets/hero-particles.js"></script>
+  
+  <script>document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      AOS.init({ once: true, duration: 1000 });
+      var parallaxImages = document.querySelectorAll('.parallax-img');
+      if(parallaxImages.length > 0) {
+        new simpleParallax(parallaxImages, {
+          orientation: 'up',
+          scale: 3.0,
+          delay: 1.0,
+          transition: 'cubic-bezier(0,0,0,1)'
+        });
+      }
+    }, 100);
+
+    // ── Lógica Motor Inteligente de Fechas ──
+    const camp = window.REA_CAMPAIGN;
+    if (camp) {
+      // Banner Efemérides
+      const infoWrap = document.getElementById('infoMesWrap');
+      const infoLabel = document.getElementById('infoMesLabel');
+      const infoGrid = document.getElementById('infoMesGrid');
+      
+      if (camp.efemerides && camp.efemerides.length > 0 && infoWrap) {
+        if (camp.bannerImg) {
+          const bannerBg = document.querySelector('.banner-bg-img');
+          if (bannerBg) bannerBg.src = camp.bannerImg;
+        }
+        infoLabel.textContent = camp.monthName.toUpperCase();
+        infoGrid.innerHTML = '';
+        camp.efemerides.forEach(ef => {
+          infoGrid.innerHTML += `
+            <div class="info-mes-item">
+              <span class="imi-emoji">${ef.emoji}</span>
+              <div>
+                <strong>${ef.title}</strong>
+                <p>${ef.desc}</p>
+              </div>
+            </div>
+          `;
+        });
+        infoWrap.style.display = 'block';
+      }
+
+      // Pop-up sugerencia especial
+      if (camp.showPopup) {
+        const popup = document.createElement('div');
+        popup.className = 'campaign-popup';
+        popup.style.cssText = 'position: fixed; bottom: 80px; right: 20px; background: var(--rosa); color: white; padding: 15px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255, 45, 120, 0.4); z-index: 1000; font-family: "Poppins", sans-serif; cursor: pointer; opacity: 0; transform: translateY(20px); transition: all 0.5s ease;';
+        popup.onclick = () => window.location.href = camp.ctaLink;
+        popup.innerHTML = `
+          <div style="font-size: 14px; font-weight: 700; margin-bottom: 5px;">Sugerencia de Regalo 🎁</div>
+          <div style="font-size: 12px;">${camp.ctaText}</div>
+          <div style="position: absolute; top: -10px; right: -10px; background: white; color: var(--rosa); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);" onclick="event.stopPropagation(); this.parentElement.style.display='none';">✖</div>
+        `;
+        document.body.appendChild(popup);
+        
+        setTimeout(() => {
+          popup.style.opacity = '1';
+          popup.style.transform = 'translateY(0)';
+        }, 3000);
+      }
+    }
+  });</script>
 </body>
 
 </html>
