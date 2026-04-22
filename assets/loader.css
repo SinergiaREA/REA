@@ -41,12 +41,15 @@
    RESET BÁSICO DEL LOADER
    ================================================================ */
 * { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; overflow-x:hidden; }
 
 /* ================================================================
    LOADER PRINCIPAL
    ================================================================ */
 .sinergia-loader {
-    position: fixed; top:0; left:0; width:100%; height:100%;
+    position: fixed; top:0; left:0; width:100%;
+    height: 100vh;        /* fallback para navegadores sin soporte dvh */
+    height: 100dvh;       /* ← altura REAL visible en móvil (excluye barras del navegador) */
     background: var(--loader-bg-dark);
     display: flex; align-items: center; justify-content: center;
     z-index: 99999; opacity:1; visibility:visible;

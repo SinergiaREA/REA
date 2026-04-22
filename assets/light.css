@@ -41,7 +41,11 @@
    2. RESET Y BASE
    ================================================================ */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    width: 100%;          /* ← evita franja blanca a la derecha en móvil */
+    overflow-x: hidden;   /* ← bloquea scroll horizontal en html también */
+}
 
 /* ── Imágenes responsivas globales ── */
 img, video, iframe { max-width:100%; height:auto; display:block; }
@@ -49,9 +53,10 @@ img, video, iframe { max-width:100%; height:auto; display:block; }
 /* ── Fuente y fondo del body ──────────────────────────────────
    Cambia font-family aquí y el <link> en index.html           */
 body {
+    width: 100%;          /* ← asegura que el body no exceda el viewport */
     background: var(--blanco);
     color: var(--negro);
-    font-family: 'DM Sans', sans-serif; /* ← fuente principal */
+    font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
     line-height: 1.6;
 }
