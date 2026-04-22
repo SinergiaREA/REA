@@ -52,6 +52,7 @@
     z-index: 99999; opacity:1; visibility:visible;
     transition: opacity .6s ease, visibility .6s ease;
     flex-direction: column; gap:30px; overflow:hidden;
+    padding: 20px;
 }
 
 /* ── FONDO PARALLAX (Ken Burns) ── */
@@ -118,6 +119,12 @@
     position:relative; width:130px; height:130px; margin:0 auto;
     filter:drop-shadow(0 0 14px rgba(61,139,255,0.4));
     will-change:transform; transform:translateZ(0);
+}
+@media (max-width: 480px) {
+    .heart-spinner {
+        width: 100px;
+        height: 100px;
+    }
 }
 .heart-spinner::before {
     content:''; position:absolute; inset:0; border-radius:50%;
@@ -191,6 +198,8 @@
     padding:6px 6px 4px;
     display:flex; flex-direction:column; align-items:center;
     animation:logoFloat 3.4s ease-in-out infinite;
+    max-width: 90vw;
+    overflow: hidden;
 }
 .logo-wordmark { display:inline-flex; align-items:baseline; justify-content:center; gap:var(--brand-gap); white-space:nowrap; }
 
@@ -342,17 +351,23 @@
    RESPONSIVE
    ================================================================ */
 @media (max-width: 768px) {
+    .sinergia-loader { gap: 20px; padding: 20px; }
     .heart-spinner    { width:110px; height:110px; }
     .loader-brand     { font-size:40px; }
     .sinergia-loader-logo { --brand-script-size:44px; --brand-rea-size:46px; --brand-gap:16px; }
     .logo-tech        { gap:6px; }
     .logo-tech span   { width:9px; }
     .loader-text      { font-size:22px; }
+    .spring-icon      { font-size: 44px; }
 }
 @media (max-width: 480px) {
-    .heart-spinner    { width:100px; height:100px; }
-    .sinergia-loader-logo { --brand-script-size:32px; --brand-rea-size:34px; --brand-gap:12px; }
-    .loader-text      { font-size:20px; }
+    .sinergia-loader { gap: 16px; padding: 16px; }
+    .heart-spinner    { width:85px; height:85px; }
+    .sinergia-loader-logo { --brand-script-size:28px; --brand-rea-size:30px; --brand-gap:10px; }
+    .loader-text      { font-size:16px; }
+    .spring-icon      { font-size: 36px; width:60px; height:60px; }
+    .loader-status    { font-size:12px; padding:6px 12px; }
+    .logo-tech span   { width:5px; }
 }
 
 /* ── Reduced motion ── */

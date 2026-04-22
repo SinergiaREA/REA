@@ -100,6 +100,12 @@ nav {
         var(--azul) 100%) 1;
     transition: transform .3s ease;
 }
+@media (max-width: 768px) {
+    nav { padding: 0 20px; }
+}
+@media (max-width: 480px) {
+    nav { padding: 0 16px; height: 56px; }
+}
 
 /* ── Logo en nav ── */
 .nav-logo {
@@ -161,6 +167,12 @@ nav {
     padding: 140px 20px 80px; /* ← top padding compensa la nav fija (~64px) */
     text-align: center;
 }
+@media (max-width: 768px) {
+    .hero { padding: 120px 16px 60px; }
+}
+@media (max-width: 480px) {
+    .hero { padding: 100px 12px 48px; min-height: auto; }
+}
 
 /* Capas de fondo del hero */
 .hero-bg {
@@ -201,7 +213,7 @@ nav {
 /* ── Título principal SINERGIA REA ── */
 .hero-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 15vw, 160px); /* ← tamaño hero title */
+    font-size: clamp(48px, 15vw, 160px); /* ← tamaño hero title */
     letter-spacing: -2px; line-height: .9;
     position: relative; z-index: 1;
     animation: fadeUp .9s ease both .1s;
@@ -212,11 +224,21 @@ nav {
 /* "REA" debajo — más grande, con stroke amarillo y sombra azul */
 .hero-title .rea   {
     color: var(--amarillo); display: block;
-    font-size: clamp(88px, 20vw, 200px); /* ← tamaño "REA" */
+    font-size: clamp(60px, 20vw, 200px); /* ← tamaño "REA" */
     line-height: .88;
     -webkit-text-stroke: 2px var(--amarillo);
     /* Sombra de texto azul para dar profundidad */
     text-shadow: 4px 4px 0px var(--azul), 8px 8px 0px rgba(0,87,255,0.2);
+}
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: clamp(40px, 12vw, 80px);
+    }
+    .hero-title .rea {
+        font-size: clamp(48px, 16vw, 120px);
+        -webkit-text-stroke: 1.5px var(--amarillo);
+        text-shadow: 2px 2px 0px var(--azul), 4px 4px 0px rgba(0,87,255,0.2);
+    }
 }
 
 /* ── Subtítulo y ubicación ── */
@@ -664,23 +686,52 @@ footer::after {
 @media (max-width: 768px) {
     nav                  { padding:14px 20px; }
     .nav-links           { display:none; }
-    .stats-strip         { gap:32px; padding:24px 20px; }
+    .nav-logo            { font-size:18px; }
+    .stats-strip         { gap:32px; padding:24px 20px; flex-direction:column; align-items:center; }
     .stat-sep            { display:none; }
     .feature-box         { grid-template-columns:1fr; }
     .horario-wrap        { grid-template-columns:1fr; }
     .servicios-grid      { grid-template-columns:1fr; }
     .valores-grid        { grid-template-columns:repeat(2,1fr); }
+    .papeleria-grid      { grid-template-columns:repeat(3,1fr); }
     section              { padding:56px 20px; }
     .hero                { padding:80px 16px 48px; }
-    .hero-cta            { flex-direction:column; align-items:center; }
+    .hero-cta            { flex-direction:column; align-items:stretch; }
     .btn-primary,.btn-secondary,.btn-galeria { width:100%; text-align:center; justify-content:center; }
     .footer-logo         { font-size:48px; }
     footer               { padding:48px 16px 32px; }
+    .badge               { font-size:9px; padding:6px 14px; }
+    .section-title       { font-size:clamp(32px,6vw,48px); }
 }
 @media (max-width: 480px) {
+    nav                  { padding:12px 16px; height:56px; }
+    .nav-logo            { font-size:16px; letter-spacing:2px; }
+    .nav-menu-btn        { width:40px; height:40px; }
     .papeleria-grid      { grid-template-columns:repeat(2,1fr); }
     .valores-grid        { grid-template-columns:1fr; }
-    .stat-num            { font-size:36px; }
+    .stat-num            { font-size:28px; }
+    .stat-label          { font-size:8px; }
+    .stats-strip         { gap:16px; padding:20px 16px; }
+    section              { padding:40px 16px; }
+    .hero                { padding:90px 12px 40px; }
+    .hero-sub            { font-size:clamp(11px,1.5vw,14px); margin-top:16px; }
+    .scroll-hint         { font-size:9px; bottom:20px; }
+    .badge               { font-size:8px; padding:5px 12px; margin-bottom:20px; }
+    .hero-tags           { margin-top:24px; gap:6px; }
+    .tag                 { padding:5px 12px; font-size:9px; }
+    .hero-cta            { gap:10px; margin-top:24px; }
+    .btn-primary,.btn-secondary,.btn-galeria { 
+        padding:12px 24px; font-size:10px; 
+        border: 1.5px solid;
+    }
+    .footer-logo         { font-size:36px; }
+    footer               { padding:40px 12px 24px; }
+    .footer-content      { padding:30px 16px 0; flex-direction:column; }
+    .footer-tags-row     { padding:0 16px 16px; }
+    .section-title       { font-size:clamp(28px,5vw,42px); }
+    .section-label       { font-size:9px; }
+    .scroll-top          { width:36px; height:36px; font-size:16px; bottom:80px; right:16px; }
+    .wa-float            { width:48px; height:48px; font-size:24px; bottom:16px; right:16px; }
 }
 
 /* ── Reduced motion ── */
