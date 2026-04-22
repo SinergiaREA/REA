@@ -43,6 +43,9 @@
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
 
+/* ── Imágenes responsivas globales ── */
+img, video, iframe { max-width:100%; height:auto; display:block; }
+
 /* ── Fuente y fondo del body ──────────────────────────────────
    Cambia font-family aquí y el <link> en index.html           */
 body {
@@ -166,6 +169,7 @@ nav {
     position: relative; overflow: hidden;
     padding: 140px 20px 80px; /* ← top padding compensa la nav fija (~64px) */
     text-align: center;
+    transition: background 1s ease; /* para transición suave entre temas */
 }
 @media (max-width: 768px) {
     .hero { padding: 120px 16px 60px; }
@@ -394,12 +398,15 @@ section {
    ================================================================ */
 .servicios-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr; /* Mobile First: 1 columna base */
     gap: 2px; background: var(--gris-borde);
     border: 2px solid var(--gris-borde); border-radius: 6px; overflow: hidden;
 }
+@media (min-width: 600px) {
+    .servicios-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+}
 .servicio-card {
-    background: var(--blanco); padding: 36px 32px;
+    background: var(--blanco); padding: clamp(20px, 4vw, 36px) clamp(16px, 3vw, 32px);
     position: relative; transition: background .3s; cursor: default;
 }
 .servicio-card:hover { background: var(--papel); }
@@ -436,7 +443,7 @@ section {
    ================================================================ */
 .papeleria-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 12px;
 }
 .papel-item {
@@ -452,9 +459,12 @@ section {
    11. HORARIO
    ================================================================ */
 .horario-wrap {
-    display: grid; grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: 1fr; /* Mobile First */
     gap: 2px; background: var(--gris-borde);
     border-radius: 4px; overflow: hidden; max-width: 700px;
+}
+@media (min-width: 600px) {
+    .horario-wrap { grid-template-columns: 1fr 1fr; }
 }
 .horario-item          { background:var(--blanco); padding:24px 28px; transition:background .2s; }
 .horario-item:hover    { background:var(--papel); }
@@ -471,8 +481,11 @@ section {
 
 /* ── Feature box (ubicación/contacto) ── */
 .feature-box {
-    display: grid; grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: 1fr; /* Mobile First */
     gap: 2px; background: var(--gris-borde); border-radius: 6px; overflow: hidden;
+}
+@media (min-width: 600px) {
+    .feature-box { grid-template-columns: 1fr 1fr; }
 }
 .fb-item         { background:var(--blanco); padding:28px; transition:background .2s; }
 .fb-item:hover   { background:var(--papel); }
@@ -689,11 +702,9 @@ footer::after {
     .nav-logo            { font-size:18px; }
     .stats-strip         { gap:32px; padding:24px 20px; flex-direction:column; align-items:center; }
     .stat-sep            { display:none; }
-    .feature-box         { grid-template-columns:1fr; }
-    .horario-wrap        { grid-template-columns:1fr; }
-    .servicios-grid      { grid-template-columns:1fr; }
+    /* feature-box, horario-wrap, servicios-grid ya son Mobile First (1fr base) */
     .valores-grid        { grid-template-columns:repeat(2,1fr); }
-    .papeleria-grid      { grid-template-columns:repeat(3,1fr); }
+    .papeleria-grid      { grid-template-columns:repeat(2,1fr); }
     section              { padding:56px 20px; }
     .hero                { padding:80px 16px 48px; }
     .hero-cta            { flex-direction:column; align-items:stretch; }
@@ -755,7 +766,7 @@ footer::after {
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 24px;
-    padding: 40px 40px 0;
+    padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 40px) 0;
     position: relative; z-index: 1;
     margin-bottom: 24px;
 }
@@ -955,16 +966,8 @@ footer::after {
    El JS aplica la clase al <div class="hero"> según la hora
    ================================================================ */
 
-/* ── Estructura base del hero dinámico ── */
-.hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    position: relative; overflow: hidden;
-    padding: 140px 20px 80px;
-    text-align: center;
-    transition: background 1s ease;
-}
+/* ── Estructura base del hero dinámico — ver sección 6 arriba ── */
+/* (regla .hero ya declarada en sección 6, solo se agregan los temas aquí) */
 
 /* Esferas flotantes */
 .hero-spheres { position:absolute; inset:0; pointer-events:none; z-index:1; }
@@ -1131,7 +1134,7 @@ footer::after {
 }
 
 .info-mes-inner {
-    padding: 48px 56px;
+    padding: clamp(20px, 4vw, 48px) clamp(16px, 5vw, 56px);
     position: relative; z-index: 2;
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 24px;
