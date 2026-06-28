@@ -26,14 +26,24 @@
   <meta property="og:locale" content="es_MX" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sinergia REA — Tu Solucion Integral · Veracruz" />
-  <title>Sinergia REA |Servicios Contables e Informaticos y Papeleria </title>
+  <link rel="canonical" href="https://sinergia-rea.vercel.app/" />
+  <meta property="og:url" content="https://sinergia-rea.vercel.app/" />
+  <meta property="og:image" content="https://sinergia-rea.vercel.app/img/og-sinergia-rea.jpg" />
+  <meta name="twitter:image" content="https://sinergia-rea.vercel.app/img/og-sinergia-rea.jpg" />
+  <link rel="icon" type="image/svg+xml" href="assets/sinergia-mesh.svg" />
+  <title>Sinergia REA | Servicios Contables e Informaticos y Papeleria</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- Preloads de optimización de rendimiento -->
+  <link rel="preload" href="assets/loader.css" as="style" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;600;700;900&display=swap" as="style" crossorigin />
+  
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=JetBrains+Mono:wght@400;700&family=Poppins:wght@400;600;700;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="assets/loader.css" />
-  <link rel="stylesheet" href="assets/light.css" />
+  <link rel="stylesheet" href="assets/loader.css?v=4.2" />
+  <link rel="stylesheet" href="assets/light.css?v=4.2" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 
@@ -84,7 +94,7 @@
   <div class="progress-bar" id="progressBar"></div>
   <a href="https://wa.me/525645003181?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios"
     class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
-  <div class="scroll-top" id="scrollTop">↑</div>
+  <div class="scroll-top" id="scrollTop" role="button" tabindex="0" aria-label="Volver arriba">↑</div>
 
   <!-- ══ NAV ══ -->
   <nav>
@@ -93,6 +103,7 @@
         class="n-rea">REA</span>
     </a>
     <ul class="nav-links">
+      <li><a href="#">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#papeleria">Papeleria</a></li>
       <li><a href="#horario">Horario</a></li>
@@ -111,6 +122,7 @@
   <div class="nav-overlay" id="navOverlay"></div>
   <div class="nav-mobile-panel" id="navMobilePanel">
     <ul class="nav-mobile-links">
+      <li><a href="#" onclick="closeMobileNav()">Inicio</a></li>
       <li><a href="#servicios" onclick="closeMobileNav()">Servicios</a></li>
       <li><a href="#papeleria" onclick="closeMobileNav()">Papelería</a></li>
       <li><a href="#horario" onclick="closeMobileNav()">Horario</a></li>
@@ -145,14 +157,13 @@
 
     <!-- Subtítulo de contexto -->
     <p class="hero-greeting-sub" id="heroGreetingSub">
-      Bienvenido a marzo 2026 · Primavera
+      Sinergia REA
     </p>
 
     <!-- Badge de empresa -->
     <div class="badge" style="margin-top: 24px">
       <span class="badge-dot"></span>
-      <span>SINERGIA REA · PAPELERÍA &amp; SERVICIOS CONTABLES E INFORMÁTICOS
-      </span>
+      <span id="heroBadgeText">SINERGIA REA · PAPELERÍA &amp; SERVICIOS CONTABLES E INFORMÁTICOS</span>
     </div>
 
     <!-- CTAs -->
@@ -192,7 +203,7 @@
   <!-- ══ BANNER INFORMATIVO DEL MES ══ -->
   <div class="info-mes-wrap" id="infoMesWrap" data-aos="fade-up" data-aos-duration="1000" style="display: none;">
     <!-- IMAGEN DE FONDO PARALLAX -->
-    <img class="parallax-img banner-bg-img" src="assets/sinergia-mesh.svg" alt="Fondo Sinergia Parallax">
+    <img class="parallax-img banner-bg-img" src="assets/sinergia-mesh.svg" alt="Fondo Sinergia Parallax" loading="lazy">
     <div class="info-mes-overlay"></div>
     <!-- TS PARTICLES DEL BANNER -->
     <div id="tsparticles-banner" style="position: absolute; inset:0; z-index: 1; pointer-events: none;"></div>
@@ -540,224 +551,31 @@
 
   <div class="divider"></div>
 
-  <!-- ══ FOOTER ══ igual que galería ══ -->
-  <sinergia-footer></sinergia-footer>
-
-  <script type="module" src="js/components/SinergiaFooter.js"></script>
-  <script src="assets/campaign.js"></script>
-  <script src="assets/loader.js"></script>
-  <script>
-    (function () {
-      "use strict";
-      // ── Progress bar + scroll top ──
-      const bar = document.getElementById("progressBar");
-      const top = document.getElementById("scrollTop");
-      let tick = false;
-      function onScroll() {
-        const y = document.documentElement.scrollTop;
-        const h =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        if (bar) bar.style.width = (y / h) * 100 + "%";
-        if (top) top.classList.toggle("visible", y > 300);
-      }
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (tick) return;
-          tick = true;
-          requestAnimationFrame(() => {
-            onScroll();
-            tick = false;
-          });
-        },
-        { passive: true },
-      );
-      onScroll();
-      if (top)
-        top.addEventListener("click", () =>
-          window.scrollTo({ top: 0, behavior: "smooth" }),
-        );
-
-      
-
-      // ── Smooth scroll ──
-      document.querySelectorAll('a[href^="#"]').forEach((a) => {
-        a.addEventListener("click", (e) => {
-          const t = document.querySelector(a.getAttribute("href"));
-          if (t) {
-            e.preventDefault();
-            t.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        });
-      });
-
-      // ── Nav hide/show on scroll ──
-      let lastY = 0;
-      const nav = document.querySelector("nav");
-      window.addEventListener(
-        "scroll",
-        () => {
-          const y = window.scrollY;
-          if (nav)
-            nav.style.transform =
-              y > lastY && y > 120 ? "translateY(-100%)" : "translateY(0)";
-          lastY = y;
-        },
-        { passive: true },
-      );
-
-      // ── Badge dinamico desde campaign.js ──
-      document.addEventListener("DOMContentLoaded", () => {
-        const c = window.REA_CAMPAIGN || {};
-        const b = document.getElementById("heroBadgeText");
-        if (b && c.shortDateLabel)
-          b.textContent =
-            c.shortDateLabel + " · PAPELERÍA & SERVICIOS · VERACRUZ";
-      });
-    })();
-
-    // ══════════════════════════════════════════════════════
-    // HERO DINÁMICO — tema y saludo según hora de México
-    // ══════════════════════════════════════════════════════
-    (function () {
-      // Obtener hora de México (GMT-6)
-      const now = new Date();
-      const mxTime = new Date(
-        now.toLocaleString("en-US", { timeZone: "America/Mexico_City" }),
-      );
-      const hour = mxTime.getHours();
-
-      // ── Configuración de temas ──────────────────────────────
-      // Modifica aquí los textos, iconos y colores de esferas
-      const temas = {
-        manana: {
-          clase: "theme-manana",
-          saludo: "¡Buenos días!",
-          sub: "Bienvenido a marzo 2026 · Primavera ☀️",
-          icono: "🌅",
-          esferas: ["#FFD700", "#FFA500", "#FFE4B5", "#87CEEB"],
-          loaderBg:
-            "linear-gradient(135deg, #81c784 0%, #fff9e6 50%, #ffb300 100%)",
-        },
-        tarde: {
-          clase: "theme-tarde",
-          saludo: "¡Buenas tardes!",
-          sub: "Bienvenido a marzo 2026 · Primavera 🌤️",
-          icono: "🌤️",
-          esferas: ["#FF8C00", "#FF6347", "#FFB6C1", "#FFA07A"],
-          loaderBg:
-            "linear-gradient(135deg, #1a472a 0%, #e8f5e9 30%, #fff9e6 50%, #ffd66d 70%, #4caf50 100%)",
-        },
-        noche: {
-          clase: "theme-noche",
-          saludo: "¡Buenas noches!",
-          sub: "Bienvenido a marzo 2026 · Primavera 🌙",
-          icono: "🌙",
-          esferas: ["#4169E1", "#9370DB", "#6495ED", "#8A2BE2"],
-          loaderBg:
-            "linear-gradient(135deg, #1A1A3E 0%, #16213E 50%, #533483 100%)",
-        },
-        madrugada: {
-          clase: "theme-madrugada",
-          saludo: "¡Buena madrugada!",
-          sub: "Velando contigo · Sinergia REA ✨",
-          icono: "✨",
-          esferas: ["#1a1a6e", "#2c2c8e", "#3a3aae", "#4a4ace"],
-          loaderBg:
-            "linear-gradient(135deg, #060818 0%, #0A0E27 50%, #1A0533 100%)",
-        },
-      };
-
-      // ── Determinar tema según horario ──────────────────────
-      let tema;
-      if (hour >= 6 && hour < 12) tema = temas.manana;
-      else if (hour >= 12 && hour < 19) tema = temas.tarde;
-      else if (hour >= 19 && hour < 24) tema = temas.noche;
-      else tema = temas.madrugada; // 0–5:59am
-
-      // --- CAMPAÑA OVERRIDE ---
-      const campaign = window.REA_CAMPAIGN || {};
-      if (campaign.hasSpecialCampaign) {
-        tema.esferas = campaign.heroColors || tema.esferas;
-        tema.sub = campaign.heroGreetingSub || tema.sub;
-        
-        // Actualizar CTA
-        const ctaEl = document.querySelector('.btn-galeria');
-        if (ctaEl && campaign.ctaText) {
-          ctaEl.textContent = campaign.ctaText;
-          ctaEl.href = campaign.ctaLink || "galeria_perfumes.html";
-        }
-      }
-
-      // ── Aplicar al hero ────────────────────────────────────
-      const heroEl = document.getElementById("heroSection");
-      const greetingEl = document.getElementById("heroGreeting");
-      const subEl = document.getElementById("heroGreetingSub");
-      const iconEl = document.getElementById("heroTimeIcon");
-
-      if (heroEl) heroEl.classList.add(tema.clase);
-      if (greetingEl) greetingEl.textContent = tema.saludo;
-      if (subEl) subEl.textContent = tema.sub;
-      if (iconEl) iconEl.textContent = tema.icono;
-
-      // ── Esferas flotantes ──────────────────────────────────
-      const spheresContainer = document.getElementById("heroSpheres");
-      if (spheresContainer) {
-        for (let i = 0; i < 6; i++) {
-          const s = document.createElement("div");
-          s.className = "hero-sphere";
-          const size = 14 + Math.random() * 32;
-          const color =
-            tema.esferas[Math.floor(Math.random() * tema.esferas.length)];
-          Object.assign(s.style, {
-            width: size + "px",
-            height: size + "px",
-            backgroundColor: color,
-            left: Math.random() * 100 + "%",
-            top: Math.random() * 100 + "%",
-            animationDelay: Math.random() * 6 + "s",
-            animationDuration: 8 + Math.random() * 5 + "s",
-          });
-          spheresContainer.appendChild(s);
-        }
-      }
-
-      // ── Sincronizar loader con el mismo tema ───────────────
-      const loader = document.getElementById("sinergiaLoader");
-      if (loader) {
-        loader.style.background = tema.loaderBg;
-      }
-    })();
-
-    // ── Menú hamburguesa ──
-    const navBtn = document.getElementById("navMenuBtn");
-    const navPanel = document.getElementById("navMobilePanel");
-    const navOvly = document.getElementById("navOverlay");
-    function openMobileNav() {
-      navBtn.classList.add("open");
-      navPanel.classList.add("open");
-      navOvly.classList.add("visible");
-      document.body.style.overflow = "hidden";
-    }
-    function closeMobileNav() {
-      navBtn.classList.remove("open");
-      navPanel.classList.remove("open");
-      navOvly.classList.remove("visible");
-      document.body.style.overflow = "";
-    }
-    if (navBtn)
-      navBtn.addEventListener("click", () =>
-        navBtn.classList.contains("open")
-          ? closeMobileNav()
-          : openMobileNav(),
-      );
-    if (navOvly) navOvly.addEventListener("click", closeMobileNav);
-    // Escapar para cerrar
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMobileNav();
-    });
-  </script>
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="footer-accent-bar-g"></div>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h4>Sinergia REA</h4>
+        <p>Tu solución integral en San Andrés Tuxtla. Papelería, servicios contables e informáticos.</p>
+        <div class="footer-tags">
+          <span class="footer-tag-g">Papelería</span>
+          <span class="footer-tag-g">Servicios</span>
+          <span class="footer-tag-g">Tecnología</span>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p><strong>Ubicación:</strong> San Andrés Tuxtla, Veracruz</p>
+        <p><strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/525645003181" style="color: #FFB800; text-decoration: none;">+52 56 4500 3181</a></p>
+        <p><strong>Horario:</strong> L-V: 6am - 7am y 5pm - 10pm | Sáb: 11am - 7pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Sinergia REA. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+  <script src="assets/campaign.js?v=4.2"></script>
+  <script src="assets/loader.js?v=4.2"></script>
   
   <!-- Librerías Externas -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -765,72 +583,12 @@
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
   
   <!-- Scripts Locales de Efectos Especiales -->
-  <script src="assets/quantum-particles.js"></script>
-  <script src="assets/hero-particles.js"></script>
+  <script src="assets/quantum-particles.js?v=4.2"></script>
+  <script src="assets/hero-particles.js?v=4.2"></script>
   
-  <script>document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      AOS.init({ once: true, duration: 1000 });
-      var parallaxImages = document.querySelectorAll('.parallax-img');
-      if(parallaxImages.length > 0) {
-        new simpleParallax(parallaxImages, {
-          orientation: 'up',
-          scale: 3.0,
-          delay: 1.0,
-          transition: 'cubic-bezier(0,0,0,1)'
-        });
-      }
-    }, 100);
-
-    // ── Lógica Motor Inteligente de Fechas ──
-    const camp = window.REA_CAMPAIGN;
-    if (camp) {
-      // Banner Efemérides
-      const infoWrap = document.getElementById('infoMesWrap');
-      const infoLabel = document.getElementById('infoMesLabel');
-      const infoGrid = document.getElementById('infoMesGrid');
-      
-      if (camp.efemerides && camp.efemerides.length > 0 && infoWrap) {
-        if (camp.bannerImg) {
-          const bannerBg = document.querySelector('.banner-bg-img');
-          if (bannerBg) bannerBg.src = camp.bannerImg;
-        }
-        infoLabel.textContent = camp.monthName.toUpperCase();
-        infoGrid.innerHTML = '';
-        camp.efemerides.forEach(ef => {
-          infoGrid.innerHTML += `
-            <div class="info-mes-item">
-              <span class="imi-emoji">${ef.emoji}</span>
-              <div>
-                <strong>${ef.title}</strong>
-                <p>${ef.desc}</p>
-              </div>
-            </div>
-          `;
-        });
-        infoWrap.style.display = 'block';
-      }
-
-      // Pop-up sugerencia especial
-      if (camp.showPopup) {
-        const popup = document.createElement('div');
-        popup.className = 'campaign-popup';
-        popup.style.cssText = 'position: fixed; bottom: 80px; right: 20px; background: var(--rosa); color: white; padding: 15px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(255, 45, 120, 0.4); z-index: 1000; font-family: "Poppins", sans-serif; cursor: pointer; opacity: 0; transform: translateY(20px); transition: all 0.5s ease;';
-        popup.onclick = () => window.location.href = camp.ctaLink;
-        popup.innerHTML = `
-          <div style="font-size: 14px; font-weight: 700; margin-bottom: 5px;">Sugerencia de Regalo 🎁</div>
-          <div style="font-size: 12px;">${camp.ctaText}</div>
-          <div style="position: absolute; top: -10px; right: -10px; background: white; color: var(--rosa); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);" onclick="event.stopPropagation(); this.parentElement.style.display='none';">✖</div>
-        `;
-        document.body.appendChild(popup);
-        
-        setTimeout(() => {
-          popup.style.opacity = '1';
-          popup.style.transform = 'translateY(0)';
-        }, 3000);
-      }
-    }
-  });</script>
+  <!-- Lógica y Controladores Dinámicos -->
+  <script src="assets/hero.js?v=4.2"></script>
+  <script src="assets/main.js?v=4.2"></script>
 </body>
 
 </html>

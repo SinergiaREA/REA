@@ -1,0 +1,12 @@
+# ================================================================
+# Sinergia REA — robots.txt
+# ================================================================
+
+User-agent: *
+Allow: /
+
+# Guía de desarrollo interna — no indexar
+Disallow: /guia_sinergia_rea.html
+Disallow: /assets/backup/
+
+Sitemap: https://sinergia-rea.vercel.app/sitemap.xml

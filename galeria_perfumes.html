@@ -24,19 +24,28 @@
     <meta property="og:title" content="Perfumes L'BEL - Benito Juárez y Primavera | Sinergia REA">
     <meta property="og:description" content="Descubre nuestra colección de marzo de perfumes L'BEL para primavera.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sinergia-rea.vercel.app/galeria_perfumes" />
+    <meta property="og:image" content="https://sinergia-rea.vercel.app/img/og-sinergia-rea.jpg" />
+    <link rel="canonical" href="https://sinergia-rea.vercel.app/galeria_perfumes" />
+    <link rel="icon" type="image/svg+xml" href="assets/sinergia-mesh.svg" />
     <title>Galería de Perfumes L'BEL | Sinergia REA</title> <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preloads de optimización de rendimiento -->
+    <link rel="preload" href="css/galeria.css?v=4.2" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" as="style" crossorigin>
+    
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@700;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/galeria.css">
-    <link rel="stylesheet" href="assets/light.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="css/galeria.css?v=4.2">
+    <link rel="stylesheet" href="assets/light.css?v=4.2">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 
 <body> <!-- Botón Volver --> <a href="index.html" class="back-button">← VOLVER</a> <!-- WhatsApp Flotante --> <a
-        href="https://wa.me/5645003181?text=Hola%2C%20me%20interesan%20los%20perfumes%20L%27BEL%20%F0%9F%92%90"
+        href="https://wa.me/525645003181?text=Hola%2C%20me%20interesan%20los%20perfumes%20L%27BEL%20%F0%9F%92%90"
         class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"> <svg
             viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -82,136 +91,292 @@
         <div class="gallery-content">
             <div class="gallery-header">
                 <h2>🌸 Nuestra Colección Exclusiva 🌸</h2>
-            </div> <!-- GRID DE PERFUMES -->
-            <div class="perfume-grid"> <!-- Perfume 1 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/1.jpeg" alt="Miss L'BEL Elegance" loading="lazy"> </div>
+            </div>
+            
+            <!-- FILTROS POR CATEGORÍA (Fase 4.2 y 5.1) -->
+            <div class="gallery-filters" role="group" aria-label="Filtrar perfumes por categoría">
+                <button class="filter-btn active" data-category="all" aria-label="Mostrar todos los perfumes">Todos ✨</button>
+                <button class="filter-btn" data-category="ella" aria-label="Mostrar perfumes para ella">Para Ella 👩</button>
+                <button class="filter-btn" data-category="el" aria-label="Mostrar perfumes para él">Para Él 👨</button>
+                <button class="filter-btn" data-category="unisex" aria-label="Mostrar perfumes unisex">Unisex ⚖️</button>
+                <button class="filter-btn" data-category="live" aria-label="Mostrar perfumes de la línea Live">Línea Live 🌿</button>
+            </div>
+
+            <!-- GRID DE PERFUMES -->
+            <div class="perfume-grid">
+                <!-- Perfume 1 -->
+                <div class="perfume-card" data-category="ella" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Miss L'BEL">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/1.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/1.jpeg" alt="Miss L'BEL Elegance" loading="eager" fetchpriority="high">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">🏆 Bestseller</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Para Ella 👩</div>
                         <h3 class="perfume-name">Miss L'BEL 💖</h3>
-                        <p class="perfume-description"> Inspirada en el encanto de Francia Aroma floral frutal con
-                            esencia de alta perfumería francesa. </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Jazmín</span> <span class="note-tag">
-                                Rosa</span> <span class="note-tag"> Cítricos</span> </div>
-                        <div class="perfume-price">$380</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Inspirada en el encanto de Francia. Aroma floral frutal con esencia de alta perfumería francesa.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Jazmín</span>
+                            <span class="note-tag">Rosa</span>
+                            <span class="note-tag">Cítricos</span>
+                        </div>
+                        <div class="perfume-price">$380</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Miss L'BEL">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 2 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/2.jpeg" alt="Live Adventure" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 2 -->
+                <div class="perfume-card" data-category="el" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Live Adventure">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/2.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/2.jpeg" alt="Live Adventure" loading="eager" fetchpriority="high">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">🆕 Nuevo</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Para Él 👨</div>
                         <h3 class="perfume-name">Live Adventure 🌊</h3>
-                        <p class="perfume-description"> Fuerza y vitalidad para ir más allá Creada por Isaac Sinclair en
-                            Francia </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Menta</span> <span class="note-tag">
-                                Lavanda</span> <span class="note-tag"> Nuez moscada</span> </div>
-                        <div class="perfume-price">$380</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Fuerza y vitalidad para ir más allá. Creada por Isaac Sinclair en Francia.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Menta</span>
+                            <span class="note-tag">Lavanda</span>
+                            <span class="note-tag">Nuez moscada</span>
+                        </div>
+                        <div class="perfume-price">$380</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Live Adventure">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 3 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/3.jpeg" alt="YOU Eau de Toilette" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 3 -->
+                <div class="perfume-card" data-category="unisex" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de YOU Eau de Toilette">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/3.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/3.jpeg" alt="YOU Eau de Toilette" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">💎 Edición Limitada</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Unisex ⚖️</div>
                         <h3 class="perfume-name">YOU Eau de Toilette ✨</h3>
-                        <p class="perfume-description"> Celebra tu autenticidad Aroma frutal para quienes viven la vida
-                            a su manera </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Bergamota</span> <span class="note-tag">
-                                Mandarina</span> <span class="note-tag"> Toronja</span> <span class="note-tag">
-                                Lavanda</span> </div>
-                        <div class="perfume-price">$300</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Celebra tu autenticidad. Aroma frutal para quienes viven la vida a su manera.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Bergamota</span>
+                            <span class="note-tag">Mandarina</span>
+                            <span class="note-tag">Toronja</span>
+                            <span class="note-tag">Lavanda</span>
+                        </div>
+                        <div class="perfume-price">$300</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de YOU Eau de Toilette">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 4 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/4.jpeg" alt="Familia Bleu" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 4 -->
+                <div class="perfume-card" data-category="el" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Familia Bleu">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/4.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/4.jpeg" alt="Familia Bleu" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">👑 Premium</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Para Él 👨</div>
                         <h3 class="perfume-name">Familia Bleu 🌌</h3>
-                        <p class="perfume-description"> Bleu Intense: Poderoso como las olas Bleu Night: Energía y
-                            frescura del mar </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Cedro</span> <span class="note-tag">
-                                Ámbar</span> <span class="note-tag"> Acuático</span> </div>
-                        <div class="perfume-price">$380 c/u</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Bleu Intense: Poderoso como las olas. Bleu Night: Energía y frescura del mar.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Cedro</span>
+                            <span class="note-tag">Ámbar</span>
+                            <span class="note-tag">Acuático</span>
+                        </div>
+                        <div class="perfume-price">$380 c/u</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Familia Bleu">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 5 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/5.jpeg" alt="Bleu Night" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 5 -->
+                <div class="perfume-card" data-category="el" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Bleu Night">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/5.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/5.jpeg" alt="Bleu Night" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="perfume-info">
                         <div class="perfume-category">Para Él 👨</div>
                         <h3 class="perfume-name">Bleu Night 🌙</h3>
-                        <p class="perfume-description"> Dueño de la noche Creado por Pascal Gaurin Poder de seducción
-                            absoluto </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Acuático</span> <span class="note-tag">
-                                Salvia</span> <span class="note-tag"> Cedro</span> </div>
-                        <div class="perfume-price">$380</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Dueño de la noche. Creado por Pascal Gaurin. Poder de seducción absoluto.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Acuático</span>
+                            <span class="note-tag">Salvia</span>
+                            <span class="note-tag">Cedro</span>
+                        </div>
+                        <div class="perfume-price">$380</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Bleu Night">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 6 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/6.jpeg" alt="Bleu Intense" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 6 -->
+                <div class="perfume-card" data-category="el" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Bleu Intense">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/6.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/6.jpeg" alt="Bleu Intense" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">🥇 #1 L'BEL</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Para Él 👨</div>
                         <h3 class="perfume-name">Bleu Intense ⚡</h3>
-                        <p class="perfume-description"> El perfume Nº1 de L'BEL. Aroma herbal fresco de muy alta
-                            concentración 🌿 </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Herbal</span> <span class="note-tag"> Bayas
-                                negras</span> <span class="note-tag"> Haba tonka</span> </div>
-                        <div class="perfume-price">$380</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">El perfume Nº1 de L'BEL. Aroma herbal fresco de muy alta concentración.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Herbal</span>
+                            <span class="note-tag">Bayas negras</span>
+                            <span class="note-tag">Haba tonka</span>
+                        </div>
+                        <div class="perfume-price">$380</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Bleu Intense">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 7 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/7.jpeg" alt="Línea Live" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 7 -->
+                <div class="perfume-card" data-category="live" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Aroma Herbal">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/7.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/7.jpeg" alt="Línea Live" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">🏆 Bestseller</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Línea Live 🌿</div>
                         <h3 class="perfume-name">Aroma Herbal 🌿</h3>
-                        <p class="perfume-description"> Fragancia romántica y natural. Perfecta para el día a día 🌿
-                        </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Tomillo</span> <span class="note-tag">
-                                Bergamota</span> <span class="note-tag"> Ámbar</span> </div>
-                        <div class="perfume-price">$380 c/u</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Fragancia romántica y natural. Perfecta para el día a día.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Tomillo</span>
+                            <span class="note-tag">Bergamota</span>
+                            <span class="note-tag">Ámbar</span>
+                        </div>
+                        <div class="perfume-price">$380 c/u</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Aroma Herbal">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 8 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/8.jpeg" alt="Live Frontier" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 8 -->
+                <div class="perfume-card" data-category="el" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Live Frontier">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/8.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/8.jpeg" alt="Live Frontier" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">🆕 Nuevo</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Para Él 👨</div>
                         <h3 class="perfume-name">Live Frontier 🧭</h3>
-                        <p class="perfume-description"> Creado por Jacques Huclier Frescura cítrica con maderas
-                            ambaradas intensas </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Bergamota</span> <span class="note-tag">
-                                Maderas</span> <span class="note-tag"> Musk</span> </div>
-                        <div class="perfume-price">$380</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Creado por Jacques Huclier. Frescura cítrica con maderas ambaradas intensas.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Bergamota</span>
+                            <span class="note-tag">Maderas</span>
+                            <span class="note-tag">Musk</span>
+                        </div>
+                        <div class="perfume-price">$380</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Live Frontier">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 9 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/9.jpeg" alt="Bleu Glacial" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 9 -->
+                <div class="perfume-card" data-category="el" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Bleu Glacial">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/9.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/9.jpeg" alt="Bleu Glacial" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">🔥 Intenso</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Para Él 👨</div>
                         <h3 class="perfume-name">Bleu Glacial ❄️</h3>
-                        <p class="perfume-description"> ❄️ Fuerza de la naturaleza. Frescura helada con corazón
-                            amaderado. </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Pino siberiano</span> <span
-                                class="note-tag">❄️ Menta helada</span> <span class="note-tag"> Amaderado</span> </div>
-                        <div class="perfume-price">$380</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Fuerza de la naturaleza. Frescura helada con corazón amaderado.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Pino siberiano</span>
+                            <span class="note-tag">Menta helada</span>
+                            <span class="note-tag">Amaderado</span>
+                        </div>
+                        <div class="perfume-price">$380</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Bleu Glacial">Ver detalles ✨</button>
                     </div>
-                </div> <!-- Perfume 10 -->
-                <div class="perfume-card" data-aos="fade-up" data-aos-duration="900">
-                    <div class="perfume-image"> <img class="parallax-img" src="img/11.jpeg" alt="Miss L'BEL Elegance" loading="lazy"> </div>
+                </div>
+
+                <!-- Perfume 10 -->
+                <div class="perfume-card" data-category="ella" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Miss L'BEL Elegance">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/11.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/11.jpeg" alt="Miss L'BEL Elegance" loading="lazy">
+                        </picture>
+                    </div>
                     <div class="perfume-badge">🏆 Bestseller</div>
                     <div class="perfume-info">
                         <div class="perfume-category">Para Ella 👩</div>
                         <h3 class="perfume-name">Miss L'BEL Elegance 🌸</h3>
-                        <p class="perfume-description"> Elegancia francesa Floral frutal con frambuesa, neroli y
-                            vainilla </p>
-                        <div class="perfume-notes"> <span class="note-tag"> Frambuesa</span> <span class="note-tag">
-                                Neroli</span> <span class="note-tag"> Vainilla</span> </div>
-                        <div class="perfume-price">$380</div> <button class="perfume-cta">Ver detalles ✨</button>
+                        <p class="perfume-description">Elegancia francesa. Floral frutal con frambuesa, neroli y vainilla.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Frambuesa</span>
+                            <span class="note-tag">Neroli</span>
+                            <span class="note-tag">Vainilla</span>
+                        </div>
+                        <div class="perfume-price">$380</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Miss L'BEL Elegance">Ver detalles ✨</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 11 (Fase 4.2 Completar 12) -->
+                <div class="perfume-card" data-category="ella" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Mithyka Exclusif">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/10.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/10.jpeg" alt="Mithyka Exclusif" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="perfume-badge">💎 Exclusivo</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">Para Ella 👩</div>
+                        <h3 class="perfume-name">Mithyka Exclusif 🌟</h3>
+                        <p class="perfume-description">Fragancia floral de alta concentración con jazmín de la India y sándalo, hecha para destacar.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Jazmín</span>
+                            <span class="note-tag">Sándalo</span>
+                            <span class="note-tag">Flores Blancas</span>
+                        </div>
+                        <div class="perfume-price">$390</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Mithyka Exclusif">Ver detalles ✨</button>
+                    </div>
+                </div>
+
+                <!-- Perfume 12 (Fase 4.2 Completar 12) -->
+                <div class="perfume-card" data-category="el" data-aos="fade-up" data-aos-duration="900" role="button" tabindex="0" aria-label="Ver detalles de Devos Magnetic">
+                    <div class="perfume-image">
+                        <picture>
+                            <source srcset="img/13.webp" type="image/webp">
+                            <img class="parallax-img" src="img/backup/13.jpeg" alt="Devos Magnetic" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="perfume-badge">🔥 Magnético</div>
+                    <div class="perfume-info">
+                        <div class="perfume-category">Para Él 👨</div>
+                        <h3 class="perfume-name">Devos Magnetic 🔥</h3>
+                        <p class="perfume-description">Aroma oriental especiado con cardamomo y sándalo. Diseñado para el hombre de presencia absoluta.</p>
+                        <div class="perfume-notes">
+                            <span class="note-tag">Cardamomo</span>
+                            <span class="note-tag">Sándalo</span>
+                            <span class="note-tag">Pimienta</span>
+                        </div>
+                        <div class="perfume-price">$380</div>
+                        <button class="perfume-cta" aria-label="Ver detalles de Devos Magnetic">Ver detalles ✨</button>
                     </div>
                 </div>
             </div>
@@ -219,7 +384,31 @@
 
     </div>
 
-    <sinergia-footer></sinergia-footer>
+    <div class="scroll-top" id="scrollTop" role="button" tabindex="0" aria-label="Volver arriba">↑</div>
+    
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="footer-accent-bar-g"></div>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h4>Sinergia REA</h4>
+        <p>Tu solución integral en San Andrés Tuxtla. Papelería, servicios contables e informáticos.</p>
+        <div class="footer-tags">
+          <span class="footer-tag-g">Papelería</span>
+          <span class="footer-tag-g">Servicios</span>
+          <span class="footer-tag-g">Tecnología</span>
+        </div>
+      </div>
+      <div class="footer-info">
+        <p><strong>Ubicación:</strong> San Andrés Tuxtla, Veracruz</p>
+        <p><strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/525645003181" style="color: #FFB800; text-decoration: none;">+52 56 4500 3181</a></p>
+        <p><strong>Horario:</strong> L-V: 6am - 7am y 5pm - 10pm | Sáb: 11am - 7pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Sinergia REA. Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
     <!-- MODAL -->
     <div id="perfumeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalName" aria-hidden="true">
@@ -235,9 +424,8 @@
             </div>
         </div>
     </div>
-    <script type="module" src="js/components/SinergiaFooter.js"></script>
-    <script src="assets/campaign.js"></script>
-    <script src="assets/galeria.js"></script>
+    <script src="assets/campaign.js?v=4.2"></script>
+    <script src="js/galeria.js?v=4.2"></script>
 
     <!-- Animaciones: AOS & simpleParallax -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

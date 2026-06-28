@@ -28,7 +28,7 @@ class SinergiaFooter extends HTMLElement {
                         Tu Solución Integral · Papelería & servicios contables e informáticos · Veracruz, México 2026
                     </div>
                     <a href="https://wa.me/${this.whatsappNumber}?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios"
-                        class="footer-cta" target="_blank" rel="noopener noreferrer">
+                        class="footer-cta" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
                         <span>💬</span> CONTÁCTANOS POR WHATSAPP
                     </a>
                     <div class="footer-tags">
@@ -41,7 +41,6 @@ class SinergiaFooter extends HTMLElement {
                     </div>
                     <div class="footer-divider"></div>
                     <div class="footer-legal">
-                        <br />
                         🦅 · © 2026 Sinergia REA
                     </div>
                     <div class="footer-location">
@@ -55,3 +54,4 @@ class SinergiaFooter extends HTMLElement {
 
 // Definir el elemento personalizado
 customElements.define('sinergia-footer', SinergiaFooter);
+
